@@ -40,7 +40,6 @@ class TestMainCase(unittest.TestCase):
 			fl = open(self.get_path(filename), "w"); fl.close()
 			res = rm.remove_file(True, self.get_path(filename), filename)
 			output.assert_called_once_with("File deleted successfully.")
-			# os.remove(f"C:\\Users\\{os.getenv('USERNAME')}\\Desktop\\{filename}")
 
 
 	@patch("text_operations.search_file.take_filename")
