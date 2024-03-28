@@ -11,6 +11,11 @@ import os
 from unittest.mock import patch
 
 class TestMainCase(unittest.TestCase):
+
+	def get_path(self, filename):
+		return f"C:\\Users\\{os.getenv('USERNAME')}\\Desktop\\{filename}"
+
+
 	def test_commands(self):
 		self.assertEqual("""Voice Command                       Action
 -------------------------------------------------------------------
@@ -32,8 +37,8 @@ class TestMainCase(unittest.TestCase):
 	def test_delete_file_success(self):
 		with patch("builtins.print") as output:
 			filename = "c++.txt"
-			fl = open(f"C:\\Users\\{os.getenv('USERNAME')}\\Desktop\\{filename}", "w"); fl.close()
-			res = rm.remove_file(True, f"C:\\Users\\{os.getenv('USERNAME')}\\Desktop\\{filename}", {filename})
+			fl = open(self.get_path(filename), "w"); fl.close()
+			res = rm.remove_file(True, self.get_path(filename), filename)
 			output.assert_called_once_with("File deleted successfully.")
 			# os.remove(f"C:\\Users\\{os.getenv('USERNAME')}\\Desktop\\{filename}")
 
@@ -45,10 +50,10 @@ class TestMainCase(unittest.TestCase):
 		mock_path.return_value = f"C:\\Users\\{os.getenv('USERNAME')}\\Desktop\\"
 		path = mock_path.return_value
 		filename = mock_input.return_value
-		fl = open(f"C:\\Users\\{os.getenv('USERNAME')}\\Desktop\\{filename}", "w"); fl.close()
-		search_path = f"C:\\Users\\{os.getenv('USERNAME')}\\Desktop\\{filename}"
-		self.assertEqual((True, f"C:\\Users\\{os.getenv('USERNAME')}\\Desktop\\{filename}"), sf.find_file(filename, path))
-		os.remove(f"C:\\Users\\{os.getenv('USERNAME')}\\Desktop\\{filename}")
+		fl = open(self.get_path(filename), "w"); fl.close()
+		search_path = self.get_path(filename)
+		self.assertEqual((True, self.get_path(filename)), sf.find_file(filename, path))
+		os.remove(self.get_path(filename))
 
 
 	@patch("text_operations.search_file.take_filename")
