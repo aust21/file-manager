@@ -4,6 +4,7 @@ import text_operations
 import text_operations.removeFile as rm
 import text_operations.viewFile as vf
 import text_operations.writeFile as wf
+
 from unittest.mock import patch
 
 class TestMainCase(unittest.TestCase):
@@ -16,7 +17,7 @@ class TestMainCase(unittest.TestCase):
 -------------------------------------------------------------------
 -------------------------------------------------------------------""", main.commands())
 
-	@patch("text_operations.removeFile.take_filename")
+	@patch("text_operations.search_file.take_filename")
 	def test_delete_file_doesnt_exist(self, mock_input):
 		with patch("builtins.print") as output:
 			mock_input.return_value = "myfile.txt"
