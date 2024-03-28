@@ -1,10 +1,9 @@
 import unittest
 import main
-import operations
-import operations.removeFile as rm
-import operations.viewFile as vf
-import operations.writeFile as wf
-import operations.voice_input as vi
+import text_operations
+import text_operations.removeFile as rm
+import text_operations.viewFile as vf
+import text_operations.writeFile as wf
 from unittest.mock import patch
 
 class TestMainCase(unittest.TestCase):
@@ -17,11 +16,13 @@ class TestMainCase(unittest.TestCase):
 -------------------------------------------------------------------
 -------------------------------------------------------------------""", main.commands())
 
-
-	def test_delete_file_doesnt_exist(self):
+	@patch("text_operations.removeFile.take_filename")
+	def test_delete_file_doesnt_exist(self, mock_input):
 		with patch("builtins.print") as output:
-			res = rm.remove_file("delete myfile pdf")
-			output.assert_called_once_with("There no file named 'myfile.pdf'")
+			mock_input.return_value = "myfile.txt"
+			file_name = mock_input.return_value
+			res = rm.remove_file(False, None, file_name)
+			output.assert_called_once_with(f"There no file named '{file_name}'")
 
 
 	def test_delete_file_success(self):
@@ -29,13 +30,6 @@ class TestMainCase(unittest.TestCase):
 			res = rm.remove_file("delete data structures and algorithms text")
 			output.assert_called_once_with("File deleted successfully.")
 
-
-	@patch("operations.voice_input.get_command")
-	def test_voice_to_text(self, text):
-		text.return_value = "open myfile txt"
-		output = text.return_value
-		actual_output = construct_command(output)
-		self.assertEqual("open myfile.txt", actual_output)
 
 
 if __name__ == "__main__":
