@@ -31,14 +31,17 @@ class TestMainCase(unittest.TestCase):
 
 	def test_delete_file_success(self):
 		with patch("builtins.print") as output:
-			res = rm.remove_file("delete data structures and algorithms text")
+			filename = "c++.txt"
+			fl = open(f"C:\\Users\\{os.getenv('USERNAME')}\\Desktop\\{filename}", "w"); fl.close()
+			res = rm.remove_file(True, f"C:\\Users\\{os.getenv('USERNAME')}\\Desktop\\{filename}", {filename})
 			output.assert_called_once_with("File deleted successfully.")
+			# os.remove(f"C:\\Users\\{os.getenv('USERNAME')}\\Desktop\\{filename}")
 
 
 	@patch("text_operations.search_file.take_filename")
 	@patch("text_operations.removeFile.search_path")
 	def test_search_file_exist(self, mock_input, mock_path):
-		mock_input.return_value = "myfile.txt"
+		mock_input.return_value = "I_love_Mr_Ballen.txt"
 		mock_path.return_value = f"C:\\Users\\{os.getenv('USERNAME')}\\Desktop\\"
 		path = mock_path.return_value
 		filename = mock_input.return_value
