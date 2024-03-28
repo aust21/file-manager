@@ -11,9 +11,14 @@ def remove_file(can_remove, file_path, file_name):
 		print(f"There no file named '{file_name}'")
 
 
+def search_path():
+	return "C:\\"
+
+
 def main():
 	file_name = sf.take_filename()
-	can_remove, file_path = sf.find_file(file_name, "C:\\")
+	search = search_path()
+	can_remove, file_path = sf.find_file(file_name, search)
 	print(remove_file(can_remove, file_path, file_name))
 	
 

@@ -4,6 +4,9 @@ import text_operations
 import text_operations.removeFile as rm
 import text_operations.viewFile as vf
 import text_operations.writeFile as wf
+import text_operations.search_file as sf
+import os
+# import platform
 
 from unittest.mock import patch
 
@@ -30,6 +33,20 @@ class TestMainCase(unittest.TestCase):
 		with patch("builtins.print") as output:
 			res = rm.remove_file("delete data structures and algorithms text")
 			output.assert_called_once_with("File deleted successfully.")
+
+
+	@patch("text_operations.search_file.take_filename")
+	@patch("text_operations.removeFile.search_path")
+	def test_search_file_doesnt_exist(self, mock_input, mock_path):
+		mock_input.return_value = "myfile.txt"
+		mock_path.return_value = f"C:\\Users\\{os.getenv('USERNAME')}\\Desktop\\"
+		path = mock_path.return_value
+		filename = mock_input.return_value
+		fl = open(f"C:\\Users\\{os.getenv('USERNAME')}\\Desktop\\{filename}", "w")
+		fl.close()
+		search_path = f"C:\\Users\\{os.getenv('USERNAME')}\\Desktop\\{filename}"
+		self.assertEqual((True, f"C:\\Users\\{os.getenv('USERNAME')}\\Desktop\\{filename}"), sf.find_file(filename, path))
+		os.remove(f"C:\\Users\\{os.getenv('USERNAME')}\\Desktop\\{filename}")
 
 
 
