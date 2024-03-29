@@ -1,8 +1,15 @@
+import sys, os
+sys.path.append(os.getcwd())
 import text_operations.search_file as sf
 
 
 def show_file_contents(file_exists, file_path):
-	pass
+	if file_exists:
+		with open(file_path, "r") as fl:
+			content = fl.readlines()
+			print("".join(content))
+	else:
+		print("Cannot open the file, make sure it exists.")
 
 
 if __name__ == "__main__":
