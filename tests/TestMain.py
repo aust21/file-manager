@@ -12,8 +12,15 @@ from unittest.mock import patch
 
 class TestMainCase(unittest.TestCase):
 
-	def get_path(self, filename):
-		return f"C:\\Users\\{os.getenv('USERNAME')}\\Desktop\\{filename}"
+	def setUp(self):
+		self.file_name = "MrBallen_Presents-The_Strange_Dark_Mysterious.txt"
+		self.file_path = f"C:\\Users\\{os.getenv('USERNAME')}\\Desktop\\{self.file_name}"
+		with open(self.file_path, "w") as fl:
+			fl.write("If you are fan of the strange dark and mysterious delivered in story format,\n"
+			"tell the like button you're taking it on a vacation oversees but ship it off to space instead...")
+		
+	# def tearDown(self):
+	# 	os.remove(self.file_path)
 
 
 	def test_commands(self):
@@ -36,9 +43,7 @@ class TestMainCase(unittest.TestCase):
 
 	def test_delete_file_success(self):
 		with patch("builtins.print") as output:
-			filename = "c++.txt"
-			fl = open(self.get_path(filename), "w"); fl.close()
-			res = rm.remove_file(True, self.get_path(filename), filename)
+			res = rm.remove_file(True, self.file_path, self.file_name)
 			output.assert_called_once_with("File deleted successfully.")
 
 
@@ -49,10 +54,8 @@ class TestMainCase(unittest.TestCase):
 		mock_path.return_value = f"C:\\Users\\{os.getenv('USERNAME')}\\Desktop\\"
 		path = mock_path.return_value
 		filename = mock_input.return_value
-		fl = open(self.get_path(filename), "w"); fl.close()
-		search_path = self.get_path(filename)
-		self.assertEqual((True, self.get_path(filename)), sf.find_file(filename, path))
-		os.remove(self.get_path(filename))
+		search_path = self.file_path
+		self.assertEqual((True, self.file_path), sf.find_file(self.file_name, path))
 
 
 	@patch("text_operations.search_file.take_filename")
