@@ -22,3 +22,5 @@ class TestViewClass(unittest.TestCase):
 
 	def test_view_file_exists(self):		
 		output = vf.show_file_contents(True, self.file_path)
+		self.assertEqual("""If you are fan of the strange dark and mysterious delivered in story format, take
+the like button skydiving but give it a faulty parachute....""", output)
