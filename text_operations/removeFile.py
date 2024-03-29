@@ -1,4 +1,5 @@
 import sys, os
+import platform
 sys.path.append(os.getcwd())
 import text_operations.search_file as sf
 

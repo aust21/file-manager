@@ -62,6 +62,5 @@ class TestMainCase(unittest.TestCase):
 		self.assertTrue((False, None) == sf.find_file(filename, "C:\\3-28-2024T11:50.pdf"))
 
 
-
 if __name__ == "__main__":
 	unittest.main()
