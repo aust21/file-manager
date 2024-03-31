@@ -6,8 +6,6 @@ import text_operations.viewFile as vf
 import text_operations.writeFile as wf
 import text_operations.search_file as sf
 import os
-# import platform
-
 from unittest.mock import patch
 
 class TestMainCase(unittest.TestCase):
@@ -18,9 +16,6 @@ class TestMainCase(unittest.TestCase):
 		with open(self.file_path, "w") as fl:
 			fl.write("If you are fan of the strange dark and mysterious delivered in story format,\n"
 			"tell the like button you're taking it on a vacation oversees but ship it off to space instead...")
-		
-	# def tearDown(self):
-	# 	os.remove(self.file_path)
 
 
 	def test_commands(self):
