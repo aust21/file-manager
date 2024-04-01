@@ -4,8 +4,18 @@ sys.path.append(os.getcwd())
 import text_operations.search_file as sf
 import text_operations.pdf_hander as pdf
 
+def set_path():
+	return f"C:\\Users\\{os.getenv("USERNAME")}\\Documents"
+
+
+def create_file_manager_dir(path):
+	if not os.path.exists(f"{path}\\FileManager")
+		os.mkdir(f"{path}\\FileManager")
+
+
 def create_txt_read_file(file_name, file_type, content):
-	pass
+	with open(file_name, 'w') as fl:
+		fl.write(content)
 
 
 def write_to_file(valid_name, new_page, content):

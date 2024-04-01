@@ -19,7 +19,7 @@ class TestMainCase(unittest.TestCase):
 
 
 	def test_commands(self):
-		self.assertEqual("""Voice Command                       Action
+		self.assertEqual("""Command                       Action
 -------------------------------------------------------------------
 -> open <filename>                  opens file
 -> create <filename>                creates and write to a new file

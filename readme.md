@@ -22,11 +22,12 @@ To run File Manager, follow these steps:
 
 ## Installation
 - Python 3
-- Additional dependencies: None (as of now)
+- Additional dependencies: fpdf
 
 ## Future Plans
 In the future, I plan to:
 - Make the entire project a command-line application
+- Add Linux support
 - Implement speech recognition for executing operations
 
 ## Contributors
