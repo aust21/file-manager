@@ -20,7 +20,7 @@ To run File Manager, follow these steps:
 - Navigate to the `text_operations` folder
 - To run any module, use the command: `python <module_name.py>`
 
-## Intallation
+## Installation
 - Python 3
 - Additional dependencies: None (as of now)
 

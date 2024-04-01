@@ -3,9 +3,7 @@ from unittest.mock import patch
 import text_operations
 import text_operations.writeFile as wf
 import os
-import pypdf
-from pypdf import PdfWriter
-
+from fpdf import FPDF
 
 class TestWrite(unittest.TestCase):
 
@@ -13,13 +11,18 @@ class TestWrite(unittest.TestCase):
 		self.invalid_file_name = "code.austin"
 		self.valid_file_name_inv_prefix = "invaustin.pdf"
 		self.valid_file_name = "austin.pdf"
+		self.hidden_file_name = ".austin.txt"
 		self.content = "I'm a fan of the strange, dark and mysterious delivered in story format...."
 		self.file_path = f"C:\\Users\\{os.getenv('USERNAME')}\\Documents\\FileManager"
 		self.file_path_inv = f"C:\\Users\\{os.getenv('USERNAME')}\\Documents\\FileManager\\inv"
+		self.hidden_file_dir = f"{self.file_path_inv}\\.austin.txt"
 		self.file_path_st = f"C:\\Users\\{os.getenv('USERNAME')}\\Documents\\FileManager\\stock-taking"
-		self.writer = PdfWriter()
-		self.page1 = self.writer.add_blank_page(width=8.27 * 72, height=11.7 * 72)
-		self.writer.write(f"{self.file_path_inv}\\{self.valid_file_name}")
+		try:
+			os.mkdir(self.file_path_inv)
+		except FileExistsError:
+			pass
+		with open(f"{self.file_path_inv}\\content.txt", "rb") as fl:
+			self.txt = fl.read().decode("latin-1")
 
 
 	def test_file_manager_exists(self):
@@ -35,12 +38,12 @@ class TestWrite(unittest.TestCase):
 
 	@patch("builtins.print")
 	def test_valid_file_extension_inv_prefix(self, mock_print):
-		actual = wf.write_to_file(True, True, self.content)
-		content = "Hello, this is page 1"
-		# self.page1.drawText(100, 700, content)
-		self.writer.write(self.content)
-		# new_page.write(self.content)
-		# mock_print.assert_called_once_with("New page added")
+		create_txt = wf.create_txt_read_file(self.hidden_file_name, "txt", self.content)
+		actual = wf.write_to_file(True, True, self.hidden_file_dir)
+		self.assertTrue(os.path.exists(f"{self.file_path_inv}\\{self.valid_file_name}"))
+		os.remove(self.hidden_file_dir)
+		assertFalse(os.path.exists(self.hidden_file_dir))
+		mock_print.assert_called_once_with("File created.")
 
 
 
