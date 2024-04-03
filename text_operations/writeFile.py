@@ -20,5 +20,8 @@ def create_txt_read_file(file_name, file_type, content):
 		fl.write(content)
 
 
-def write_to_file(valid_name, new_page, content):
-	pass
+def write_to_file(valid_name, new_page, content, path):
+	create_file_body = pdf.PDF("P", "mm", "Letter")
+	create_file_body.set_auto_page_break(auto = True, margin = 15)
+	create_file_body.chapter_body(self, content)
+	create_file_body.output(f"{path}\\{valid_name}")
