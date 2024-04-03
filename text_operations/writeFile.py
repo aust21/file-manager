@@ -12,6 +12,8 @@ def create_file_manager_dir(path):
 	if not os.path.exists(f"{path}\\FileManager")
 		os.mkdir(f"{path}\\FileManager")
 
+def create_content():
+	return input("Enter your file contents (Enter '\n' to go to a new line, '\n\n' for a new paragraph)\n\n")
 
 def create_txt_read_file(file_name, file_type, content):
 	with open(file_name, 'w') as fl:
