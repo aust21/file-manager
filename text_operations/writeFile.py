@@ -15,13 +15,16 @@ def create_file_manager_dir(path):
 
 def create_txt_read_file(file_name, file_type):
 	with open(f"{path}\\{file_name}", 'w') as fl:
-		print("Enter the file contents (Press enter on an empty line when you are done)\n")
+		print("Enter the file contents (Press enter on an empty line when you are done)")
 		while True:
 			content = input()
 			if not content:
 				break
 			fl.write(content + "\n\n")
 
+
+def extract_extension(file_name):
+	return file_name.split(".")[1]
 
 
 def write_to_file(valid_name, new_page, content, path):
@@ -30,8 +33,15 @@ def write_to_file(valid_name, new_page, content, path):
 	create_file_body.chapter_body(self, content)
 	create_file_body.output(f"{path}\\{valid_name}")
 
-file_name = input("Enter file name: ")
-path = set_path()
-create_file_manager_dir(path)
-# content = create_content()
-create_txt_read_file(file_name, "pdf")
+
+def main():
+	path = set_path()
+	create_file_manager_dir(path)
+	file_extension = extract_extension(file_name)
+	
+
+
+if __name__ == "__main__":
+	file_name = sf.take_filename()
+	if file_name:
+		main()

@@ -14,5 +14,5 @@ def show_file_contents(file_exists, file_path):
 
 if __name__ == "__main__":
 	file_name = sf.take_filename()
-	file_exists, file_path = sf.find_file(file_name, "C:\\") 
+	file_exists, file_path = sf.find_file(file_name, "C:\\")
 	show_file_contents(file_exists, file_path)
