@@ -1,7 +1,7 @@
 import sys, os
 from halo import Halo
 
-def take_filename():
+def take_filename() -> str:
 
 	print("Enter file name below. The file name must end with .pdf or .txt"\
 	 " and it must be prefixed with the kind of file it is.\nIf its an invoice,"\
@@ -15,11 +15,11 @@ def take_filename():
 
 
 @Halo(text="This may take a while...Super highly advanced virtual bots are searching for your file :)")
-def find_file(file_name, search_path):
+def find_file(file_name, search_path) -> tuple[bool, str]:
 	for root, dirs, files in os.walk(search_path):
 		if file_name in files:
 			return True, os.path.join(root, file_name)
-	return False, None
+	return False, ""
 
 if __name__ == "__main__":
 	file_name = take_filename

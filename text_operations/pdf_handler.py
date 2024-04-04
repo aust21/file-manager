@@ -1,7 +1,7 @@
 from fpdf import FPDF
 
 class PDF(FPDF):
-	def header(self, title):
+	def header(self, title) -> None:
 		self.set_font("times", "", 14)
 		title_width = self.get_string_width(title)
 		doc_width = self.w
@@ -13,7 +13,7 @@ class PDF(FPDF):
 		self.ln(14)
 
 
-	def chapter_body(self, name):
+	def chapter_body(self, name) -> None:
 		with open(name, "rb") as fh:
 			txt = fh.read().decode("latin-1")
 
