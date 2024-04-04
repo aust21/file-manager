@@ -38,13 +38,12 @@ class TestWrite(unittest.TestCase):
 
 	@patch("builtins.print")
 	def test_valid_file_extension_inv_prefix(self, mock_print):
-		create_txt = wf.create_txt_read_file(self.hidden_file_name, "txt", self.content)
+		create_txt = wf.create_txt_read_file(self.hidden_file_name, "txt)
 		actual = wf.write_to_file(True, True, self.hidden_file_dir)
 		self.assertTrue(os.path.exists(f"{self.file_path_inv}\\{self.valid_file_name}"))
 		os.remove(self.hidden_file_dir)
 		assertFalse(os.path.exists(self.hidden_file_dir))
 		mock_print.assert_called_once_with("File created.")
-
 
 
 if __name__ == "__main__":

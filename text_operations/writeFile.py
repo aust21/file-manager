@@ -12,12 +12,16 @@ def create_file_manager_dir(path):
 	if not os.path.exists(path):
 		os.mkdir(path)
 
-def create_content():
-	return input("Enter your file contents (Enter '\n' to go to a new line, \'\n\n' for a new paragraph)\n\n")
 
-def create_txt_read_file(file_name, file_type, content):
+def create_txt_read_file(file_name, file_type):
 	with open(f"{path}\\{file_name}", 'w') as fl:
-		fl.write(content)
+		print("Enter the file contents (Press enter on an empty line when you are done)\n")
+		while True:
+			content = input()
+			if not content:
+				break
+			fl.write(content + "\n\n")
+
 
 
 def write_to_file(valid_name, new_page, content, path):
@@ -29,5 +33,5 @@ def write_to_file(valid_name, new_page, content, path):
 file_name = input("Enter file name: ")
 path = set_path()
 create_file_manager_dir(path)
-content = create_content()
-create_txt_read_file(file_name, "pdf", content)
+# content = create_content()
+create_txt_read_file(file_name, "pdf")
