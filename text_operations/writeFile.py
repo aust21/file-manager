@@ -27,21 +27,23 @@ def extract_extension(file_name):
 	return file_name.split(".")[1]
 
 
-def write_to_file(valid_name, new_page, content, path):
+def write_to_file(valid_name, content, path):
 	create_file_body = pdf.PDF("P", "mm", "Letter")
 	create_file_body.set_auto_page_break(auto = True, margin = 15)
 	create_file_body.chapter_body(self, content)
 	create_file_body.output(f"{path}\\{valid_name}")
 
 
-def main():
+def main(valid_name):
 	path = set_path()
 	create_file_manager_dir(path)
-	file_extension = extract_extension(file_name)
-	
+	file_type = extract_extension(file_name)
+	text_format = create_txt_read_file(file_name, file_type)
+	if file_type == ".pdf":
+		write_to_file(valid_name, content, path)
 
 
 if __name__ == "__main__":
 	file_name = sf.take_filename()
 	if file_name:
-		main()
+		main(file_name)
