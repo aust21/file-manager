@@ -57,7 +57,7 @@ class TestMainCase(unittest.TestCase):
 	def test_search_file_doesnt_exist(self, mock_input):
 		mock_input.return_value = "myfile.txt"
 		filename = mock_input.return_value
-		self.assertTrue((False, None) == sf.find_file(filename, "C:\\3-28-2024T11:50.pdf"))
+		self.assertTrue((False, "") == sf.find_file(filename, "C:\\3-28-2024T11:50.pdf"))
 
 
 if __name__ == "__main__":

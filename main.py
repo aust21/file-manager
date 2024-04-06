@@ -1,6 +1,6 @@
 
 def commands():
-	return """Voice Command                       Action
+	return """Command                       Action
 -------------------------------------------------------------------
 -> open <filename>                  opens file
 -> create <filename>                creates and write to a new file
