@@ -4,7 +4,7 @@ sys.path.append(os.getcwd())
 import text_operations.search_file as sf
 import text_operations.pdf_handler as pdf
 
-def set_path() - > str:
+def set_path() -> str:
 	return f"C:\\Users\\{os.getenv('USERNAME')}\\Documents\\FileManager"
 
 
