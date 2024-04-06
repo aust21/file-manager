@@ -14,12 +14,15 @@ class PDF(FPDF):
 
 
 	def chapter_body(self, name) -> None:
-		with open(name, "rb") as fh:
-			txt = fh.read().decode("latin-1")
+		try:
+			with open(name, "rb") as fh:
+				txt = fh.read().decode("latin-1")
+				self.set_font("times", "", 12)
+				self.multi_cell(0, 5, txt)
+		except PermissionError:
+			print("Permission denied"); return
 
-		self.set_font("times", "", 12)
-		self.multi_cell(0, 5, txt)
-		self.ln()
+
 
 # document = PDF("P", "mm", "Letter")
 # document.set_auto_page_break(auto = True, margin = 15)

@@ -13,7 +13,7 @@ def create_file_manager_dir(path) -> None:
 		os.mkdir(path)
 
 
-def create_txt_read_file(file_name, file_type) -> None:
+def create_txt_read_file(file_name, file_type, path) -> None:
 	with open(f"{path}\\{file_name}", 'w') as fl:
 		print("Enter the file contents (Press enter on an empty line when you are done)")
 		while True:
@@ -28,17 +28,22 @@ def extract_extension(file_name) -> str:
 
 
 def write_to_file(valid_name, content, path) -> None:
-	create_file_body = pdf.PDF("P", "mm", "Letter")
-	create_file_body.set_auto_page_break(auto = True, margin = 15)
-	create_file_body.chapter_body(self, content)
-	create_file_body.output(f"{path}\\{valid_name}")
+	if not valid_name:
+		print("Invalid file name.")
+	else:
+		create_file_body = pdf.PDF("P", "mm", "Letter")
+		create_file_body.add_page()
+		create_file_body.set_auto_page_break(auto = True, margin = 15)
+		create_file_body.chapter_body(path)
+		create_file_body.output(f"{path}\\{valid_name}")
+		print("File created")
 
 
 def main(valid_name) -> None:
 	path = set_path()
 	create_file_manager_dir(path)
 	file_type = extract_extension(file_name)
-	text_format = create_txt_read_file(file_name, file_type)
+	text_format = create_txt_read_file(file_name, file_type, path)
 	if file_type == ".pdf":
 		write_to_file(valid_name, content, path)
 
