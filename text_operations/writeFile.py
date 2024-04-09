@@ -5,7 +5,7 @@ import text_operations.search_file as sf
 import text_operations.pdf_handler as pdf
 
 def set_path() -> str:
-	return f"C:\\Users\\{os.getenv('USERNAME')}\\Desktop\\.FileManager"
+	return f"C:\\Users\\{os.getenv('USERNAME')}\\Documents\\FileManager"
 
 
 def create_file_manager_dir(path) -> None:
@@ -28,7 +28,6 @@ def extract_extension(file_name) -> str:
 
 
 def write_to_file(valid_name, content, path) -> None:
-	print(valid_name)
 	if not valid_name:
 		print("Invalid file name.")
 	else:
