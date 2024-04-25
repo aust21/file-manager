@@ -22,7 +22,7 @@ To run File Manager, follow these steps:
 
 ## Installation
 - Python 3
-- Additional dependencies: fpdf, halo
+- Additional dependencies: fpdf, rich
 
 ## Future Plans
 In the future, I plan to:

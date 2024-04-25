@@ -7,9 +7,9 @@ from rich.layout import Layout
 layout = Layout()
 console = Console(height = 25)
 
-def app_layout(title, subtitle, message, commands, actions):
+def app_layout(title, subtitle, message, commands, actions) -> None:
 	layout.split_column(
-		Layout(Panel(message, title="File Manager", subtitle="By Austin")),
+		Layout(Panel(message, title="File Manager", subtitle="Thank you for choosing File Manager")),
 		Layout(name = "bottom"),
 	)
 
@@ -17,11 +17,10 @@ def app_layout(title, subtitle, message, commands, actions):
 	    Layout(Panel(commands, title="Commands")),
 	    Layout(Panel(actions, title="Action")),
 	)
-	# layout["top"].size = 5
 	layout["bottom"].size = 20
 	console.print(layout)
 
-def file_actions():
+def file_actions() -> str:
 	return "actions"
 
 
