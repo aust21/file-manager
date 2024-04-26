@@ -21,15 +21,19 @@ def app_layout(title, subtitle, message, commands, actions) -> None:
 	console.print(layout)
 
 def file_actions() -> str:
-	return "actions"
-
-
-def valid_commands():
 	return ""\
-	"\nedt filename       | edit an existing file\n"\
-	"crt filename       | create a new file\n"\
-	"luk filename       | look for a file\n"\
-	"shr filename email | send file to email\n\n"\
+	"\nEdit an existing file\n"\
+	"Create a new file\n"\
+	"Look for a file and return the path to the file\n"\
+	"Send file to email\n\n"
+
+
+def valid_commands() -> str:
+	return ""\
+	"\nedt filename\n"\
+	"crt filename\n"\
+	"luk filename\n"\
+	"shr filename email\n\n"\
 
 
 if __name__ == "__main__":
@@ -39,4 +43,3 @@ if __name__ == "__main__":
 	commands = valid_commands()
 	actions = file_actions()
 	app_layout(title, subtitle, message, commands, actions)
-	# commands()

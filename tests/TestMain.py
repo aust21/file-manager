@@ -18,13 +18,25 @@ class TestMainCase(unittest.TestCase):
 			"tell the like button you're taking it on a vacation oversees but ship it off to space instead...")
 
 
+	def test_actions(self):
+		actual_output = main.file_actions()
+		expected = """
+Edit an existing file
+Create a new file
+Look for a file and return the path to the file
+Send file to email
+
+"""
+		self.assertEqual(expected, actual_output)
+
+
 	def test_valid_commands(self):
 		actual_output = main.valid_commands()
 		expected = """
-edt filename       | edit an existing file
-crt filename       | create a new file
-luk filename       | look for a file
-shr filename email | send file to email
+edt filename
+crt filename
+luk filename
+shr filename email
 
 """
 		self.assertEqual(expected, actual_output)
