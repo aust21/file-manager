@@ -18,14 +18,16 @@ class TestMainCase(unittest.TestCase):
 			"tell the like button you're taking it on a vacation oversees but ship it off to space instead...")
 
 
-	def test_commands(self):
-		self.assertEqual("""Command                       Action
--------------------------------------------------------------------
--> open <filename>                  opens file
--> create <filename>                creates and write to a new file
--> read <filename>                  reads out file contents
--------------------------------------------------------------------
--------------------------------------------------------------------""", main.commands())
+	def test_valid_commands(self):
+		actual_output = main.valid_commands()
+		expected = """
+edt filename       | edit an existing file
+crt filename       | create a new file
+luk filename       | look for a file
+shr filename email | send file to email
+
+"""
+		self.assertEqual(expected, actual_output)
 
 	@patch("text_operations.search_file.take_filename")
 	def test_delete_file_doesnt_exist(self, mock_input):

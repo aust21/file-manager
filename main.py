@@ -25,14 +25,11 @@ def file_actions() -> str:
 
 
 def valid_commands():
-	return "commands"
-# 	return """Command                       Action
-# -------------------------------------------------------------------
-# -> open <filename>                  opens file
-# -> create <filename>                creates and write to a new file
-# -> read <filename>                  reads out file contents
-# -------------------------------------------------------------------
-# -------------------------------------------------------------------"""
+	return ""\
+	"\nedt filename       | edit an existing file\n"\
+	"crt filename       | create a new file\n"\
+	"luk filename       | look for a file\n"\
+	"shr filename email | send file to email\n\n"\
 
 
 if __name__ == "__main__":
