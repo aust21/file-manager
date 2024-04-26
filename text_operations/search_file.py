@@ -1,9 +1,9 @@
 import sys, os
+import subprocess
+import time
 from halo import Halo
 from rich.console import Console
-from rich.table import Table
 from rich.panel import Panel
-from rich.prompt import Prompt
 from rich.layout import Layout
 
 layout = Layout()
@@ -56,6 +56,8 @@ if __name__ == "__main__":
 	instructions = file_input_instructions()
 	display_messages(instructions)
 	file_name = take_filename()
-	file_path = find_file(file_name, "C:\\")
+	find_path = find_file(file_name, "C:\\")
 	if find_path[0]:
-		print(f"file found in {find_file[1]}")
+		print("Opening explorer")
+		time.sleep(3)
+		subprocess.Popen(fr'explorer /select,"{find_path[1]}"')
