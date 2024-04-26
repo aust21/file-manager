@@ -21,9 +21,9 @@ class TestMainCase(unittest.TestCase):
 	def test_actions(self):
 		actual_output = main.file_actions()
 		expected = """
-Edit an existing file
-Create a new file
-Look for a file and return the path to the file
+Edit an existing file\n
+Create a new file\n
+Look for a file and return the path to the file\n
 Send file to email
 
 """
@@ -33,9 +33,9 @@ Send file to email
 	def test_valid_commands(self):
 		actual_output = main.valid_commands()
 		expected = """
-edt filename
-crt filename
-luk filename
+edt filename\n
+crt filename\n
+luk filename\n
 shr filename email
 
 """
