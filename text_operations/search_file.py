@@ -26,9 +26,14 @@ def display_messages(instructions) -> None:
 
 def take_filename() -> str:
 	file_name = input("Enter file name: ")
+	return file_name
+
+
+def validate_filename(file_name) -> bool:
 	if file_name.endswith(".pdf") or file_name.endswith(".txt"):
-		return file_name
+		return True
 	print("File name should end with `.pdf` or `.txt`")
+	return False
 
 
 def file_input_instructions() -> str:

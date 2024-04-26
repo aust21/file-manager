@@ -36,21 +36,20 @@ def extract_extension(file_name) -> str:
 def write_to_file(file_name, content, sub_dir) -> None:
 	print(file_name)
 	if not file_name:
-		print("Invalid file name.")
-	else:
-		create_file_body = pdf.PDF("P", "mm", "Letter")
-		create_file_body.set_auto_page_break(auto = True, margin = 15)
-		create_file_body.add_page()
-		create_file_body.chapter_body(f"{sub_dir}\\{file_name[:-4]}.txt")
-		create_file_body.output(f"{sub_dir}\\{file_name}")
-		print("File created")
+		return "Invalid file name."
+
+	create_file_body = pdf.PDF("P", "mm", "Letter")
+	create_file_body.set_auto_page_break(auto = True, margin = 15)
+	create_file_body.add_page()
+	create_file_body.chapter_body(f"{sub_dir}\\{file_name[:-4]}.txt")
+	create_file_body.output(f"{sub_dir}\\{file_name}")
+	return "File created."
 
 
 def main(valid_name) -> None:
 	path = set_path()
 	file_name, sub_dir = create_sub_directory(valid_name, path)
 	create_file_manager_dir(path)
-	# print(f"final name{file_name}\n\n\n\n\n")
 	file_type = extract_extension(file_name)
 	text_format = create_txt_read_file(file_name, file_type, sub_dir)
 	if file_type == "pdf":
@@ -59,5 +58,6 @@ def main(valid_name) -> None:
 
 if __name__ == "__main__":
 	file_name = sf.take_filename()
-	if file_name:
+	canContinue = sf.validate_filename(file_name)
+	if canContinue:
 		main(file_name)
