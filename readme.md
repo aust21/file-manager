@@ -23,6 +23,7 @@ To run File Manager, follow these steps:
 ## Screenshots
 
 ![main](assets/readmeImages/main.png)
+![main](assets/readmeImages/search.png)
 
 ## Installation
 - Python 3
