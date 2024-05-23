@@ -1,22 +1,8 @@
-import sys, os, time, subprocess
-from halo import Halo
-from rich.console import Console
-from rich.panel import Panel
-from rich.layout import Layout
-from threading import Thread
-from rich.progress import Progress, BarColumn
-from tqdm import tqdm
+from modules import *
 
 layout = Layout()
 console = Console(height = 12)
 
-
-message = "Great guy, but he died. Or did he, because we dont know where we go when we die"
-
-for i in message:
-	sys.stdout.write(i)
-	sys.stdout.flush()
-	time.sleep(.05)
 def display_messages(instructions) -> None:
 	layout.split_column(
 		Layout(Panel("\nSearch and Locate files on your pc....\n", title="Search & Locate")),
