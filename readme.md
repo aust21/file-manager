@@ -7,9 +7,9 @@ File Manager CLI Tool
 File Manager CLI Tool is a command line tool that provides useful file operations. While not a command tool (in development :), it offers operations like creating files, editing files, locating files and deleting files.
 
 ## Features
-- Create new files -> in development
-- Locate files -> in development
-- Delete files -> in development
+- Create new files -> in development for Linux os
+- Locate files -> in development for Linux os
+- Delete files -> in development for Linux os
 - Edit existing files -> in development
 - Share files via email -> in development
 
