@@ -8,20 +8,20 @@ from rich.progress import Progress, BarColumn
 from tqdm import tqdm
 
 layout = Layout()
-console = Console(height = 25)
+console = Console(height = 12)
 
 def display_messages(instructions) -> None:
 	layout.split_column(
-		Layout(Panel("\nSearch and Locate files on your pc....", title="Search & Locate")),
+		Layout(Panel("\nSearch and Locate files on your pc....\n", title="Search & Locate")),
 		Layout(name = "Stuff")
 	)
 
 	layout["Stuff"].split_row(
-		Layout(Panel("Live search update", title="Search Program")),
+		Layout(Panel("\nEnter a valid file name, the file must be a pdf or txt format", title="File Format")),
 		Layout(Panel(instructions, title = "input Instructions"))
 	)
 
-	layout["Stuff"].size = 20
+	layout["Stuff"].size = 8
 	console.print(layout)
 
 
@@ -46,7 +46,7 @@ def file_input_instructions() -> str:
 
 
 def search_instructions() -> str:
-	return "Enter file name below. If the file is found a path to the file will be "\
+	return "\nEnter file name below. If the file is found a path to the file will be "\
 		"displayed and the file explorer will be automatically opened."
 
 
@@ -69,7 +69,7 @@ if __name__ == "__main__":
 	instructions = search_instructions()
 	display_messages(instructions)
 	file_name = take_filename()
-	find_path = find_file(file_name, "C:\\Users\\Austin\\Desktop\\")
+	find_path = find_file(file_name, "C:\\")
 	if find_path[0]:
 		print("Opening explorer")
 		time.sleep(3)
