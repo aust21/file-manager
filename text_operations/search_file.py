@@ -10,6 +10,13 @@ from tqdm import tqdm
 layout = Layout()
 console = Console(height = 12)
 
+
+message = "Great guy, but he died. Or did he, because we dont know where we go when we die"
+
+for i in message:
+	sys.stdout.write(i)
+	sys.stdout.flush()
+	time.sleep(.05)
 def display_messages(instructions) -> None:
 	layout.split_column(
 		Layout(Panel("\nSearch and Locate files on your pc....\n", title="Search & Locate")),
