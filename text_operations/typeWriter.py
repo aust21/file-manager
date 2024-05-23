@@ -1,4 +1,5 @@
 import sys, time, os
+sys.path.append(os.getcwd())
 
 def type_writer(message):
     for i in message:
