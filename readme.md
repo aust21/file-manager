@@ -20,6 +20,10 @@ To run File Manager, follow these steps:
 - Navigate to the `text_operations` folder
 - To run any module, use the command: `python <module_name.py>`
 
+## Screenshots
+
+![main](assets/readmeImages/main.png)
+
 ## Installation
 - Python 3
 - Additional dependencies: fpdf, rich
