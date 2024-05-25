@@ -24,5 +24,14 @@ class TestRemove(unittest.TestCase):
                 self.assertEqual(actual, f"There no file named 'python.java'")
 
 
+    @patch("builtins.input", side_effect=["c++.py"])
+    def test_remove_file(self, mock_input):
+        file = open("C:\\Users\\Austin\\Desktop\\testFileProgram\\c++.py", "w")
+        file.close()
+        self.assertTrue(os.path.exists("C:\\Users\\Austin\\Desktop\\testFileProgram\\c++.py"))
+        rf.remove_file(True, "C:\\Users\\Austin\\Desktop\\testFileProgram\\c++.py", "c++.py")
+        self.assertFalse(os.path.exists("C:\\Users\\Austin\\Desktop\\testFileProgram\\c++.py"))
+
+
 if __name__ == "__main__":
     unittest.main()
