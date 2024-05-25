@@ -7,4 +7,3 @@ from rich.layout import Layout
 from threading import Thread
 from rich.progress import Progress, BarColumn
 from tqdm import tqdm
-# from typeWriter import *
