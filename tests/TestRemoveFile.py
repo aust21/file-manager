@@ -15,6 +15,13 @@ class TestRemove(unittest.TestCase):
             pass
 
 
+    def tearDown(self):
+        try:
+            os.rmdir("C:\\Users\\Austin\\Desktop\\testFileProgram")
+        except FileNotFoundError:
+            pass
+
+
     @patch("builtins.input", side_effect=["python.java"])
     def test_file_doesnt_exist(self, mock_input):
         with patch("text_operations.removeFile.search_path") as path:
