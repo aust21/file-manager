@@ -6,7 +6,6 @@ import time
 import subprocess
 
 PORT = 8000
-DIRECTORY = "C:\\Users\\Austin\\"
 
 
 class MyRequestHandler(http.server.SimpleHTTPRequestHandler):
@@ -58,6 +57,8 @@ def main():
             time.sleep(2)
             print()
             runServer(ip, real_path[1])
+        else:
+            print("Please make sure you enter the correct file name")
     else:
         print("File not found.")
 
