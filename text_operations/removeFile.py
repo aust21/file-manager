@@ -7,9 +7,8 @@ import text_operations.search_file as sf
 def remove_file(can_remove, file_path, file_name) -> None:
 	if can_remove:
 		os.remove(file_path)
-		print("File deleted successfully.")
-	else:
-		print(f"There no file named '{file_name}'")
+		return "File deleted successfully."
+	return f"There no file named '{file_name}'"
 
 
 def search_path() -> str:
