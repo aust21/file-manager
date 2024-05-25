@@ -54,6 +54,7 @@ def discover_file_number(dir):
 
 
 def find_file(file_name, search_path) -> tuple[bool, str]:
+	print("This process may take a while....")
 	for root, dirs, files in tqdm(os.walk(search_path), desc="Searching"):
 		if file_name in files:
 			return True, os.path.join(root, file_name)
