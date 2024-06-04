@@ -45,14 +45,6 @@ def search_instructions() -> str:
 		"displayed and the file explorer will be automatically opened."
 
 
-def discover_file_number(dir):
-	count = 0
-	for file in tqdm(os.listdir(dir)):
-		if os.path.isfile(os.path.join(dir, file)):
-			count += 1
-	return count
-
-
 def find_file(file_name, search_path) -> tuple[bool, str]:
 	print("This process may take a while....")
 	for root, dirs, files in tqdm(os.walk(search_path), desc="Searching"):
@@ -61,14 +53,14 @@ def find_file(file_name, search_path) -> tuple[bool, str]:
 	return False, ""
 
 
-def sys_path():
+def sys_path() -> None:
 	username = os.getenv("USERNAME")
 	if platform.system() == "Linux":
 		return f"/home/{username}/"
 	return f"C:\\{username}"
 
 
-def open_files(file_path):
+def open_files(file_path) -> None:
 	if platform.system() == "Windows":
 		subprocess.Popen(fr'explorer /select,"{file_path}"')
 	elif platform.system() == "Linux":
@@ -84,7 +76,7 @@ def open_files(file_path):
 					print("No supported file manager found. Please install nautilus, thunar, or dolphin.")
 
 
-def main():
+def main() -> None:
 	instructions = search_instructions()
 	display_messages(instructions)
 	file_name = take_filename()
