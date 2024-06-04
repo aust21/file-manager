@@ -42,7 +42,8 @@ def file_input_instructions() -> str:
 
 def search_instructions() -> str:
 	return "\nEnter file name below. If the file is found a path to the file will be "\
-		"displayed and the file explorer will be automatically opened."
+		"displayed and the file explorer will be automatically opened."\
+		"For your safety, this feature on windows only searches beyond Users directory"
 
 
 def find_file(file_name, search_path) -> tuple[bool, str]:
@@ -57,7 +58,7 @@ def sys_path() -> None:
 	username = os.getenv("USERNAME")
 	if platform.system() == "Linux":
 		return f"/home/{username}/"
-	return f"C:\\{username}"
+	return f"C:\\Users\\{username}\\"
 
 
 def open_files(file_path) -> None:
