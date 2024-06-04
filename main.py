@@ -1,9 +1,4 @@
-import platform
-from rich import print
-from rich.console import Console
-from rich.panel import Panel
-from rich.table import Table
-from rich.layout import Layout
+from modules import *
 
 layout = Layout()
 console = Console(height = 17)
