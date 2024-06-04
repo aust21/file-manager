@@ -61,14 +61,42 @@ def find_file(file_name, search_path) -> tuple[bool, str]:
 	return False, ""
 
 
-if __name__ == "__main__":
+def sys_path():
+	username = os.getenv("USERNAME")
+	if platform.system() == "Linux":
+		return f"/home/{username}/"
+	return f"C:\\{username}"
+
+
+def open_files(file_path):
+	if platform.system() == "Windows":
+		subprocess.Popen(fr'explorer /select,"{file_path}"')
+	elif platform.system() == "Linux":
+		try:
+			subprocess.Popen(["nautilus", "--select", file_path])
+		except FileNotFoundError:
+			try:
+				subprocess.Popen(["thunar", "--select", file_path])
+			except FileNotFoundError:
+				try:
+					subprocess.Popen(["dolphin", "--select", file_path])
+				except FileNotFoundError:
+					print("No supported file manager found. Please install nautilus, thunar, or dolphin.")
+
+
+def main():
 	instructions = search_instructions()
 	display_messages(instructions)
 	file_name = take_filename()
-	find_path = find_file(file_name, "C:\\")
+	path = sys_path()
+	find_path = find_file(file_name, path)
 	if find_path[0]:
 		print("Opening explorer")
 		time.sleep(3)
-		subprocess.Popen(fr'explorer /select,"{find_path[1]}"')
+		open_files(find_path[1])
 	else:
 		print("File not found, please make sure it exists")
+
+
+if __name__ == "__main__":
+	main()
