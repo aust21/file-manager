@@ -1,11 +1,15 @@
-import http.server
-import socketserver
-import socket
+
+import sys, os
+sys.path.append(os.getcwd())
+from modules import *
 import search_file as sf
-import time
-import subprocess
 
 PORT = 8000
+
+if platform.system() == "Linux":
+    DIRECTORY = f"/home/{os.getenv('USERNAME')}/"
+else:
+    DIRECTORY = f"C:\\{os.getenv('USERNAME')}\\"
 
 
 class MyRequestHandler(http.server.SimpleHTTPRequestHandler):
@@ -25,9 +29,11 @@ def runServer(ip, directory):
         print(f"Serving files from {directory} at http://{ip}:{PORT}")
         httpd.serve_forever()
 
+
 def get_filename():
     name = input("Enter the file name: ")
     return name
+
 
 def get_file_path():
     path = input("Do you know where the file is located? ")
@@ -46,11 +52,11 @@ def main():
     name = get_filename()
     path = get_file_path()
     if not path:
-        real_path = sf.find_file(name, "C:\\")
+        real_path = sf.find_file(name, sf.sys_path())
     if real_path[0]:
         print("File found....The file explorer will open for you to confirm the file")
         time.sleep(3)
-        subprocess.Popen(fr'explorer /select,"{real_path[1]}"')
+        sf.open_files(real_path[1])
         confirm = input("Please confirm this is the file you want to share: [y or n]: ")
         if confirm == "y":
             print("Okay")
@@ -61,6 +67,7 @@ def main():
             print("Please make sure you enter the correct file name")
     else:
         print("File not found.")
+
 
 if __name__ == "__main__":
     main()
