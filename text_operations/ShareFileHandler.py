@@ -6,11 +6,6 @@ import search_file as sf
 
 PORT = 8000
 
-if platform.system() == "Linux":
-    DIRECTORY = f"/home/{os.getenv('USERNAME')}/"
-else:
-    DIRECTORY = f"C:\\{os.getenv('USERNAME')}\\"
-
 
 class MyRequestHandler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
@@ -35,34 +30,23 @@ def get_filename():
     return name
 
 
-def get_file_path():
-    path = input("Do you know where the file is located? ")
-    if path == "yes":
-        true_path = input(f"Enter the path: {DIRECTORY}")
-        return DIRECTORY+true_path
-    print("No worries...")
-    time.sleep(2)
-    print(f"Preparing to search for your file...")
-    time.sleep(2)
-    return False
-
-
 def main():
+    global DIRECTORY
     ip = get_address()
     name = get_filename()
-    path = get_file_path()
-    if not path:
-        real_path = sf.find_file(name, sf.sys_path())
-    if real_path[0]:
+    path = sf.find_file(name, sf.sys_path())
+    if path[0]:
+        file_path = path[1]
+        DIRECTORY = os.path.dirname(file_path)
         print("File found....The file explorer will open for you to confirm the file")
         time.sleep(3)
-        sf.open_files(real_path[1])
+        sf.open_files(path[1])
         confirm = input("Please confirm this is the file you want to share: [y or n]: ")
         if confirm == "y":
             print("Okay")
             time.sleep(2)
             print()
-            runServer(ip, real_path[1])
+            runServer(ip, path[1])
         else:
             print("Please make sure you enter the correct file name")
     else:
