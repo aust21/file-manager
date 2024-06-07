@@ -1,26 +1,73 @@
 import sys, os
 from fpdf import FPDF
 sys.path.append(os.getcwd())
+from modules import *
 import text_operations.search_file as sf
 import text_operations.pdf_handler as pdf
 
+
 def set_path() -> str:
-	return f"C:\\Users\\{os.getenv('USERNAME')}\\Documents\\FileManager"
+
+	if platform.system() == "Linux":
+		return f"/home/{os.getenv('USERNAME')}/Documents/FileManager/"
+	return f"C:\\Users\\{os.getenv('USERNAME')}\\Documents\\FileManager\\"
 
 
 def create_file_manager_dir(path) -> None:
+
 	if not os.path.exists(path):
 		os.mkdir(path)
+		
+
+def take_file_name() -> str:
+
+	name = input("Enter file name: ").lower()
+	if name.endswith(".txt") or name.endswith(".pdf"):
+		return name
+	print("Name must end with .pdf or .txt")
+	return ""
 
 
-def create_sub_directory(file_name, path):
-	if not os.path.exists(f"{path}\\{file_name[:3]}"):
-		os.mkdir(f"{path}\\{file_name[:3]}")
-	return file_name[3:], f"{path}\\{file_name[:3]}"
+def extract_file_type(file_name) -> str:
+
+	return file_name.split(".")[1]
 
 
-def create_txt_read_file(file_name, file_type, sub_dir) -> None:
-	with open(f"{sub_dir}\\{file_name.split('.')[0]}.txt", 'w') as fl:
+def type_of_operation_you_want_to_perform() -> str:
+
+	operation = input("What would you like to do? Enter c to "\
+				   "create a new file, or cw to create and add text to the file: ")
+	return operation
+
+
+def take_file_kind() -> str:
+
+	kind_of_file = input("Enter the kind of file you are creating: i.e invoice, notes: ")
+	return kind_of_file
+
+
+def take_purpose_of_file() -> str:
+
+	purpose = input("What is the file intended for? i.e school, work or personal? ")
+	return purpose
+
+
+def combine_paths(purpose_path, path) -> str:
+
+	if not os.path.exists(f"{path}{purpose_path}"):		
+		os.mkdir(f"{path}{purpose_path}")
+	return f"{path}{purpose_path}"+"/" if platform.system() == "Linux" else "\\"
+
+def set_path_of_file(path, file_kind) -> None:
+	
+	if not os.path.exists(f"{path}{file_kind}"):
+		os.mkdir(f"{path}{file_kind}")
+	return f"{path}{file_kind}"+"/" if platform.system() == "Linux" else "\\"
+
+
+def write_to_txt(file) -> None:
+
+	with open(file, 'w') as fl:
 		print("Enter the file contents (Press enter on an empty line when you are done)")
 		while True:
 			content = input()
@@ -29,35 +76,67 @@ def create_txt_read_file(file_name, file_type, sub_dir) -> None:
 			fl.write(content + "\n\n")
 
 
-def extract_extension(file_name) -> str:
-	return file_name.split(".")[1]
+def write_to_pdf(file) -> None:
+
+	with open(f"{file.split('.')[0]}.txt", 'w') as fl:
+		print("Enter the file contents (Press enter on an empty line when you are done)")
+		while True:
+			content = input()
+			if not content:
+				break
+			fl.write(content + "\n\n")
 
 
-def write_to_file(file_name, content, sub_dir) -> None:
-	print(file_name)
-	if not file_name:
-		return "Invalid file name."
+def create_pdf(path, name):
+
+	if platform.system == "Linux":
+		chapter_body_path = f"{path}{name[:-4]}.txt"
+		output = f"{path}{name}"
+	else:
+		chapter_body_path = f"{path}\\{name[:-4]}.txt"
+		output = f"{path}\\{name}"
 
 	create_file_body = pdf.PDF("P", "mm", "Letter")
-	create_file_body.set_auto_page_break(auto = True, margin = 15)
+	# create_file_body.set_auto_page_break(auto = True, margin = 15)
 	create_file_body.add_page()
-	create_file_body.chapter_body(f"{sub_dir}\\{file_name[:-4]}.txt")
-	create_file_body.output(f"{sub_dir}\\{file_name}")
-	return "File created."
+	# create_file_body.chapter_body(chapter_body_path)
+	create_file_body.output(output)
 
 
-def main(valid_name) -> None:
-	path = set_path()
-	file_name, sub_dir = create_sub_directory(valid_name, path)
-	create_file_manager_dir(path)
-	file_type = extract_extension(file_name)
-	text_format = create_txt_read_file(file_name, file_type, sub_dir)
-	if file_type == "pdf":
-		write_to_file(file_name, f"{sub_dir}\\{file_name.split('.')[0]}.txt", sub_dir)
+def what_to_perform(operation, file_name, file_type, path):
+	print(f"{path}{file_name}")
+	if operation == "c" and file_type == "txt":
+		file = open(f"{path}{file_name}", 'w')
+		file.close()
+	elif operation == "c" and file_type == "pdf":
+		create_pdf(path, file_name)
+	elif operation == "cw" and file_type == "txt":
+		write_to_txt(file_name)
+	elif operation == "cw" and file_type == "pdf":
+		write_to_pdf(file_name)
+
+def main() -> None:
+
+	# setting path
+	system_path = set_path()
+	root_path = create_file_manager_dir(system_path)
+
+	# purpose of file
+	purpose = take_purpose_of_file()
+	file_path = combine_paths(purpose, system_path)
+
+	file_name = take_file_name()
+	file_kind = take_file_kind()
+	final_path = set_path_of_file(file_path, file_kind)
+
+
+	operation = type_of_operation_you_want_to_perform()
+	file_type = extract_file_type(file_name)
+
+	what_to_perform(operation, file_name, file_type, final_path)
+
 
 
 if __name__ == "__main__":
-	file_name = sf.take_filename()
-	canContinue = sf.validate_filename(file_name)
-	if canContinue:
-		main(file_name)
+	main()
+
