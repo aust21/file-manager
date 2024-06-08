@@ -17,7 +17,7 @@ def create_file_manager_dir(path) -> None:
 
 	if not os.path.exists(path):
 		os.mkdir(path)
-		
+
 
 def take_file_name() -> str:
 
@@ -54,15 +54,23 @@ def take_purpose_of_file() -> str:
 
 def combine_paths(purpose_path, path) -> str:
 
-	if not os.path.exists(f"{path}{purpose_path}"):		
+	if not os.path.exists(f"{path}{purpose_path}"):
 		os.mkdir(f"{path}{purpose_path}")
-	return f"{path}{purpose_path}"+"/" if platform.system() == "Linux" else "\\"
+	sys_path = path+purpose_path
+	slash = "/" if platform.system() == "Linux" else "\\"
+	comb_path = sys_path+slash
+	# print(comb_path)
+
+	return comb_path
 
 def set_path_of_file(path, file_kind) -> None:
-	
+
 	if not os.path.exists(f"{path}{file_kind}"):
 		os.mkdir(f"{path}{file_kind}")
-	return f"{path}{file_kind}"+"/" if platform.system() == "Linux" else "\\"
+	sys_path = path+file_kind
+	slash = "/" if platform.system() == "Linux" else "\\"
+	file_path = sys_path+slash
+	return file_path
 
 
 def write_to_txt(file) -> None:
@@ -120,23 +128,23 @@ def main() -> None:
 	# setting path
 	system_path = set_path()
 	root_path = create_file_manager_dir(system_path)
-
+	# print(f"root {system_path}")
 	# purpose of file
 	purpose = take_purpose_of_file()
 	file_path = combine_paths(purpose, system_path)
+	print(f"file path {file_path}")
 
+	#
 	file_name = take_file_name()
 	file_kind = take_file_kind()
 	final_path = set_path_of_file(file_path, file_kind)
 
-
 	operation = type_of_operation_you_want_to_perform()
 	file_type = extract_file_type(file_name)
-
+	print(final_path)
 	what_to_perform(operation, file_name, file_type, final_path)
 
 
 
 if __name__ == "__main__":
 	main()
-
