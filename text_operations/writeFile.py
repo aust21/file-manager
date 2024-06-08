@@ -143,7 +143,7 @@ def main() -> None:
 	# purpose of file
 	purpose = take_purpose_of_file()
 	file_path = combine_paths(purpose, system_path)
-	print(f"file path {file_path}")
+	# print(f"file path {file_path}")
 
 	#
 	file_name = take_file_name()
@@ -152,7 +152,7 @@ def main() -> None:
 
 	operation = type_of_operation_you_want_to_perform()
 	file_type = extract_file_type(file_name)
-	print(file_name)
+	# print(file_name)
 	what_to_perform(operation, file_name, file_type, final_path)
 
 
