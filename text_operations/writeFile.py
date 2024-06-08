@@ -6,6 +6,46 @@ import text_operations.search_file as sf
 import text_operations.pdf_handler as pdf
 
 
+def welcome_console(title, message, commands, actions) -> None:
+	layout = Layout()
+	console = Console(height=7)
+	layout.split_column(
+		Layout(Panel(message, title=title, subtitle="")),
+		Layout(name = "bottom")
+	)
+
+	layout["bottom"].split_row(
+		Layout(Panel(commands, title="Commands")),
+		Layout(Panel(actions, title="Actions"))
+	)
+
+	console.print(layout)
+
+
+def writing_layout(message, empty_file, not_empty_file) -> None:
+
+	if os.name == 'nt':
+		os.system('cls')
+	else:
+		os.system('clear')
+
+	layout = Layout()
+	console = Console(height=10)
+	new_message = "The file will be saved in the FileManager folder in documents"
+	layout.split_column(
+		
+		Layout(Panel(new_message, title="File Location", subtitle="")),
+		Layout(name = "bottom")
+	)
+
+	layout["bottom"].split_row(
+		Layout(Panel(empty_file, title="Creating an empty file")),
+		Layout(Panel(not_empty_file, title="Creating and adding text to a new file"))
+	)
+	layout["bottom"].size = 7
+	console.print(layout)
+
+
 def set_path() -> str:
 
 	if platform.system() == "Linux":
@@ -123,7 +163,7 @@ def create_pdf(path, name):
 
 
 def what_to_perform(operation, file_name, file_type, path):
-	# print(f"{path}{file_name}")
+
 	if operation == "c" and file_type == "txt":
 		file = open(f"{path}{file_name}", 'w')
 		file.close()
@@ -134,13 +174,40 @@ def what_to_perform(operation, file_name, file_type, path):
 	elif operation == "cw" and file_type == "pdf":
 		write_to_pdf(file_name, path)
 
+
+def empty_file_creation_instructions() -> str:
+	return "1. To create an empty file just enter 'c' press enter.\n"\
+		"2. Wait for the window to pop up to reveal your file\n"\
+		"3. Edit the file...."
+
+
+def not_empty_file_instructions() -> str:
+	return "1. To create and add text to the file, enter 'cw' and you will"\
+				"be prompted to enter the contents of the file\n"\
+		"2. To enter a new paragraph, press the enter key only one and continue typing.\n"\
+		"3. To exit and save the file press the enter key twice."
+
+
+def get_commands() -> str:
+	return "1. c \n"\
+		"2. cw "
+
+
+def get_actions() -> str:
+	return "1. create a new file\n"\
+		"2. create and add text to the file"
+
+
 def main() -> None:
+	message = "You can create a new empty file or create and add text to the file"
+	commands = get_commands()
+	actions = get_actions()
+	welcome_console("Create and Write files", message, commands, actions)
 
 	# setting path
 	system_path = set_path()
 	root_path = create_file_manager_dir(system_path)
-	# print(f"root {system_path}")
-	# purpose of file
+
 	purpose = take_purpose_of_file()
 	file_path = combine_paths(purpose, system_path)
 	# print(f"file path {file_path}")
@@ -148,6 +215,7 @@ def main() -> None:
 	#
 	file_name = take_file_name()
 	file_kind = take_file_kind()
+	writing_layout(message, empty_file_creation_instructions(), not_empty_file_instructions())
 	final_path = set_path_of_file(file_path, file_kind)
 
 	operation = type_of_operation_you_want_to_perform()
