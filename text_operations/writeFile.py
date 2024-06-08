@@ -73,9 +73,9 @@ def set_path_of_file(path, file_kind) -> None:
 	return file_path
 
 
-def write_to_txt(file) -> None:
+def write_to_txt(file, path) -> None:
 
-	with open(file, 'w') as fl:
+	with open(f"{path}{file}", 'w') as fl:
 		print("Enter the file contents (Press enter on an empty line when you are done)")
 		while True:
 			content = input()
@@ -84,15 +84,30 @@ def write_to_txt(file) -> None:
 			fl.write(content + "\n\n")
 
 
-def write_to_pdf(file) -> None:
+def write_to_pdf(file, path) -> None:
 
-	with open(f"{file.split('.')[0]}.txt", 'w') as fl:
+	with open(f"{path}{file.split('.')[0]}.txt", 'w') as fl:
 		print("Enter the file contents (Press enter on an empty line when you are done)")
 		while True:
 			content = input()
 			if not content:
 				break
 			fl.write(content + "\n\n")
+
+	if platform.system() == "Linux":
+		output = f"{path}{file}"
+		chaper_body = f"{path}/{file[:-4]}.txt"
+	else:
+		output = f"{path}\\{file}"
+		chaper_body = f"{path}\\{file[:-4]}.txt"
+
+	create_file_body = pdf.PDF("P", "mm", "Letter")
+	create_file_body.set_auto_page_break(auto = True, margin = 15)
+	create_file_body.add_page()
+	create_file_body.chapter_body(chaper_body)
+	create_file_body.output(output)
+	os.remove(chaper_body)
+	print(f"File created at location: {output}")
 
 
 def create_pdf(path, name):
@@ -108,16 +123,16 @@ def create_pdf(path, name):
 
 
 def what_to_perform(operation, file_name, file_type, path):
-	print(f"{path}{file_name}")
+	# print(f"{path}{file_name}")
 	if operation == "c" and file_type == "txt":
 		file = open(f"{path}{file_name}", 'w')
 		file.close()
 	elif operation == "c" and file_type == "pdf":
 		create_pdf(path, file_name)
 	elif operation == "cw" and file_type == "txt":
-		write_to_txt(file_name)
+		write_to_txt(file_name, path)
 	elif operation == "cw" and file_type == "pdf":
-		write_to_pdf(file_name)
+		write_to_pdf(file_name, path)
 
 def main() -> None:
 
