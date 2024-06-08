@@ -97,17 +97,13 @@ def write_to_pdf(file) -> None:
 
 def create_pdf(path, name):
 
-	if platform.system == "Linux":
-		chapter_body_path = f"{path}{name[:-4]}.txt"
+	if platform.system() == "Linux":
 		output = f"{path}{name}"
 	else:
-		chapter_body_path = f"{path}\\{name[:-4]}.txt"
 		output = f"{path}\\{name}"
 
 	create_file_body = pdf.PDF("P", "mm", "Letter")
-	# create_file_body.set_auto_page_break(auto = True, margin = 15)
 	create_file_body.add_page()
-	# create_file_body.chapter_body(chapter_body_path)
 	create_file_body.output(output)
 
 
@@ -141,7 +137,7 @@ def main() -> None:
 
 	operation = type_of_operation_you_want_to_perform()
 	file_type = extract_file_type(file_name)
-	print(final_path)
+	print(file_name)
 	what_to_perform(operation, file_name, file_type, final_path)
 
 
