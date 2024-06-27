@@ -15,7 +15,7 @@ File Manager CLI Tool is a command line tool that provides useful file operation
 ## Usage
 
 ### Download
-You can download the latest binary from the link below:
+You can download the latest binary from the link:
 [Download Binary](https://github.com/aust21/file-manager/releases/download/v1.0.0/entry)
 
 - Make the Binary Executable (if necessary):
