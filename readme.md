@@ -13,11 +13,20 @@ File Manager CLI Tool is a command line tool that provides useful file operation
 - Share files on the browser
 
 ## Usage
-To run File Manager, follow these steps:
-- Clone the project
-- Navigate to the project directory in your terminal or command prompt
-- Navigate to the `text_operations` folder
-- To run any module, use the command: `python <module_name.py>`
+
+### Download
+You can download the latest binary from the link below:
+[Download Binary](https://github.com/aust21/file-manager/releases/download/v1.0.0/entry)
+
+- Make the Binary Executable (if necessary):
+```bash
+chmod +x entry
+```
+- Run the script
+```bash
+./entry search <file_name>
+```
+- [Please visit the release page](https://github.com/aust21/file-manager/releases/tag/v1.0.0) for a detailed description about this release.
 
 ## Screenshots
 
