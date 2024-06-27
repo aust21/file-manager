@@ -35,8 +35,7 @@ chmod +x entry
 
 ## Screenshots
 
-![main](assets/readmeImages/main.png)
-![main](assets/readmeImages/search.png)
+![main](assets/readmeImages/placeholder.jpg)
 
 ## Installation
 - Python 3
