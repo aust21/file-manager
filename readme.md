@@ -12,13 +12,13 @@ File Manager CLI Tool is a command line tool that provides useful file operation
 - Delete files
 - Share files on the browser
 
-### Download
-You can download the latest binary from the link:
-[Download Binary](https://github.com/aust21/file-manager/releases/download/v1.0.0/entry)
 
 ## Usage
 
-### for Windows
+You can download the latest binary from the link:
+[Download Binary](https://github.com/aust21/file-manager/releases/download/v1.0.0/entry)
+
+### For Windows
 in development :)
 
 ### For Linux
