@@ -1,7 +1,6 @@
 import sys, os
 sys.path.append(os.getcwd())
 import text_operations.search_file as sf
-import search_file as sf
 
 
 def remove_file(can_remove, file_path, file_name) -> None:

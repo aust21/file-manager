@@ -77,10 +77,9 @@ def open_files(file_path) -> None:
 					print("No supported file manager found. Please install nautilus, thunar, or dolphin.")
 
 
-def main() -> None:
+def main(file_name) -> None:
 	instructions = search_instructions()
 	display_messages(instructions)
-	file_name = take_filename()
 	path = sys_path()
 	find_path = find_file(file_name, path)
 	if find_path[0]:

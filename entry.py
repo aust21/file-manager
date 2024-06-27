@@ -1,41 +1,34 @@
-import argparse
-import subprocess
-
-# hope this goes well....
-
-def share_file(filepath):
-    pass
+import sys, os
+sys.path.append(os.getcwd())
 
 
-def create_file(filename):
-    pass
-
-
-def search_file(filename):
-    pass
-
-
-def write_file(filename):
-    pass
-
+import text_operations.removeFile as removefile
+import text_operations.search_file as search
+import text_operations.viewFile as viewFile
+import text_operations.writeFile as writeFile
 
 def main():
-    parser = argparse.ArgumentParser(description='Command-line tool for file operations')
-    parser.add_argument('command', choices=['share', 'create'], help='Command to execute')
-    parser.add_argument('arguments', nargs='*', help='Arguments for the command')
+    if len(sys.argv) < 2:
+        print("Usage: cli.py <command> [args]")
+        sys.exit(1)
 
-    args = parser.parse_args()
-    command = args.command
-    arguments = args.arguments
+    command = sys.argv[1]
+    file_name = sys.argv[2]
 
-    if command == 'fl-share':
-        share_file(*arguments)
-    elif command == 'fl-create':
-        create_file(*arguments)
-    elif command == 'fl-search':
-        create_file(*arguments)
-    elif command == 'fl-write':
-        create_file(*arguments)
+    if command == "removefile":
+        removefile.main()
+    elif command == "search":
+        search.main(file_name)
+    elif command == "viewFile":
+        viewFile.main()
+    elif command == "writeFile":
+        writeFile.main()
+    else:
+        print(f"Unknown command: {command}")
+        sys.exit(1)
 
-if __name__ == '__main__':
-    main()
+if __name__ == "__main__":
+    try:
+        main()
+    except:
+        print("File manager closed.")
