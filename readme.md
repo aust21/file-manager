@@ -7,7 +7,7 @@ File Manager CLI Tool
 File Manager CLI Tool is a command line tool that provides useful file operations. While not a command tool (in development :), it offers operations like creating files, editing files, locating files and deleting files.
 
 ## Features
-- Create new files -> in development for Linux os
+- Create new files
 - Locate files
 - Delete files
 - Share files on the browser
@@ -22,7 +22,7 @@ You can download the latest binary from the link:
 in development :)
 
 ### For Linux
-[Download the set-up script](https://github.com/aust21/file-manager/scripts/linux/setUp.sh)
+[Download the set-up script](scripts/linux/setUp.sh)
 
 ```bash
 cd ~/Downloads
