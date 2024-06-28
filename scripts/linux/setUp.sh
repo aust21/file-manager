@@ -1,7 +1,5 @@
 #!/bin/bash
 
-cp -r /home/lebza/personal_projects/file-manager/dist/filemanager ~/Downloads
-
 # Copy the filemanager binary to ~/.local/bin
 cp -r ~/Downloads/filemanager ~/.local/bin
 
