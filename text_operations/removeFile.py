@@ -5,18 +5,19 @@ import text_operations.search_file as sf
 
 def remove_file(can_remove, file_path, file_name) -> None:
 	if can_remove:
-		os.remove(file_path)
-		return "File deleted successfully."
+		sf.open_files(file_path)
+		is_file = input("Wait for the pop us window to open and confirm this is the file [y or n]: ").lower()
+		if is_file == "y" or is_file == "yes":
+			os.remove(file_path)
+			return "File deleted successfully."
+		else:
+			return "Please try to locate the file manually and delete it"
 	return f"There no file named '{file_name}'"
 
 
 
-def main() -> None:
-	file_name = sf.take_filename()
+def main(file_name) -> None:
+	# file_name = sf.take_filename()
 	search = sf.sys_path()
 	can_remove, file_path = sf.find_file(file_name, search)
 	print(remove_file(can_remove, file_path, file_name))
-
-
-if __name__ == "__main__":
-	main()

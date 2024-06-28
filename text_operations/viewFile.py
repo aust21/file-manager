@@ -5,7 +5,7 @@ import text_operations.search_file as sf
 
 
 layout = Layout()
-# console = Console(height = 12)
+console = Console()
 
 
 def display_content(text, file_name):
@@ -13,17 +13,27 @@ def display_content(text, file_name):
 		Layout(Panel(text, title=file_name))
 	)
 
-def show_file_contents(file_exists, file_path) -> None:
+def show_file_contents(file_exists, file_path, file_name) -> None:
 	if file_exists:
 		with open(file_path, "r") as fl:
 			content = fl.readlines()
-			display_content("".join(content), file_name)
+			text = "".join(content)
+			display_content(text, file_name)
+			required_height = text.count('\n')+2
+			console.height = required_height
 			console.print(layout)
 	else:
 		print("Cannot open the file, make sure it exists.")
 
 
-if __name__ == "__main__":
-	file_name = sf.take_filename()
-	file_exists, file_path = sf.find_file(file_name, "C:\\")
-	show_file_contents(file_exists, file_path)
+def sys_path() -> None:
+	username = os.getenv("USERNAME")
+	if platform.system() == "Linux":
+		return f"/home/{username}/"
+	return f"C:\\Users\\{username}\\"
+
+
+def main(file_name):
+	path = sys_path()
+	file_exists, file_path = sf.find_file(file_name, path)
+	show_file_contents(file_exists, file_path, file_name)

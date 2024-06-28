@@ -2,7 +2,7 @@ import sys, os
 sys.path.append(os.getcwd())
 from modules import *
 from center_text import *
-import ShareFileHandler as sh
+import text_operations.ShareFileHandler as sh
 
 layout = Layout()
 console = Console(height = 20)
@@ -38,15 +38,15 @@ def instuctions_text():
         "Simple... isn't?"
 
 
-def share():
+def share(file_name):
     try:
-        sh.main()
+        sh.main(file_name)
     except KeyboardInterrupt:
         print("lol bye....")
 
 
-if __name__ == "__main__":
+def main(file_name):
     warning = warning_message()
     instuctions = instuctions_text()
     app_layout("\n"+center("The insecure way to share files"), warning, instuctions)
-    share()
+    share(file_name)

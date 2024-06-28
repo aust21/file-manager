@@ -198,7 +198,7 @@ def get_actions() -> str:
 		"2. create and add text to the file"
 
 
-def main() -> None:
+def main(file_name) -> None:
 	message = "You can create a new empty file or create and add text to the file"
 	commands = get_commands()
 	actions = get_actions()
@@ -210,20 +210,11 @@ def main() -> None:
 
 	purpose = take_purpose_of_file()
 	file_path = combine_paths(purpose, system_path)
-	# print(f"file path {file_path}")
 
-	#
-	file_name = take_file_name()
 	file_kind = take_file_kind()
 	writing_layout(message, empty_file_creation_instructions(), not_empty_file_instructions())
 	final_path = set_path_of_file(file_path, file_kind)
 
 	operation = type_of_operation_you_want_to_perform()
 	file_type = extract_file_type(file_name)
-	# print(file_name)
 	what_to_perform(operation, file_name, file_type, final_path)
-
-
-
-if __name__ == "__main__":
-	main()

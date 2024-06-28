@@ -2,7 +2,7 @@
 import sys, os
 sys.path.append(os.getcwd())
 from modules import *
-import search_file as sf
+import text_operations.search_file as sf
 
 PORT = 8000
 
@@ -25,15 +25,9 @@ def runServer(ip, directory):
         httpd.serve_forever()
 
 
-def get_filename():
-    name = input("Enter the file name: ")
-    return name
-
-
-def main():
+def main(name):
     global DIRECTORY
     ip = get_address()
-    name = get_filename()
     path = sf.find_file(name, sf.sys_path())
     if path[0]:
         file_path = path[1]
@@ -51,7 +45,3 @@ def main():
             print("Please make sure you enter the correct file name")
     else:
         print("File not found.")
-
-
-if __name__ == "__main__":
-    main()

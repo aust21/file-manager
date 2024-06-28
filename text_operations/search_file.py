@@ -88,7 +88,3 @@ def main(file_name) -> None:
 		open_files(find_path[1])
 	else:
 		print("File not found, please make sure it exists")
-
-
-if __name__ == "__main__":
-	main()

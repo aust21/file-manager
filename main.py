@@ -1,11 +1,11 @@
 from modules import *
 
 layout = Layout()
-console = Console(height = 17)
+console = Console(height = 20)
 
 def app_layout(title, subtitle, message, commands, actions) -> None:
 	layout.split_column(
-		Layout(Panel(message, title="File Manager", subtitle="Thank you for choosing File Manager")),
+		Layout(Panel(message, title="File Manager", subtitle="V1.1.0")),
 		Layout(name = "bottom"),
 	)
 
@@ -13,26 +13,30 @@ def app_layout(title, subtitle, message, commands, actions) -> None:
 	    Layout(Panel(commands, title="Commands")),
 	    Layout(Panel(actions, title="Action")),
 	)
-	layout["bottom"].size = 11
+	layout["bottom"].size = 15
 	console.print(layout)
 
 def file_actions() -> str:
 	return ""\
-	"\nEdit an existing file\n\n"\
-	"Create a new file\n\n"\
-	"Look for a file and return the path to the file\n\n"\
-	"Send file to email\n\n"
+	"\nView program information\n\n"\
+	"Create a new empty file or add text to a new file\n\n"\
+	"Look for a file\n\n"\
+	"Send file through browser\n\n"\
+	"Remove a file\n\n"\
+	"View a file\n\n"
 
 
 def valid_commands() -> str:
 	return ""\
-	"\nedt filename\n\n"\
-	"crt filename\n\n"\
-	"luk filename\n\n"\
-	"shr filename email\n\n"\
+	"\nfilemanager -h\n\n"\
+	"filemanager write filename\n\n"\
+	"filemanager search filename\n\n"\
+	"filemanager share filename\n\n"\
+	"filemanager remove filename\n\n"\
+	"filemanager view filename\n\n"\
 
 
-if __name__ == "__main__":
+def entry():
 	message = "\nWelcome to file manager, the all you need file management tool for easy file operations\n"
 	title = "File Manager"
 	subtitle = "Thank you for choosing File Manager"
