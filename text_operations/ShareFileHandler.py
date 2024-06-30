@@ -37,11 +37,12 @@ def main(name):
         sf.open_files(path[1])
         confirm = input("Please confirm this is the file you want to share: [y or n]: ")
         if confirm == "y":
-            print("Okay")
-            time.sleep(2)
-            print()
+            sf.pop_up("Sharing will begin.", "File Manager | Sharing Files")
+            time.sleep(3)
             runServer(ip, path[1])
         else:
+            sf.pop_up("Sharing not started.", "File Manager | Sharing Files")
             print("Please make sure you enter the correct file name")
     else:
+        sf.pop_up("File not found.", "File Manager | Sharing Files")
         print("File not found.")

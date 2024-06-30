@@ -20,18 +20,6 @@ def display_messages(instructions) -> None:
 	console.print(layout)
 
 
-def take_filename() -> str:
-	file_name = input("Enter file name: ")
-	return file_name
-
-
-def validate_filename(file_name) -> bool:
-	if file_name.endswith(".pdf") or file_name.endswith(".txt"):
-		return True
-	print("File name should end with `.pdf` or `.txt`")
-	return False
-
-
 def file_input_instructions() -> str:
 	return "\n\nEnter file name below. The file name must end with .pdf or .txt"\
 		" and it must be prefixed with the kind of file it is.\nIf its an invoice,"\
@@ -77,14 +65,24 @@ def open_files(file_path) -> None:
 					print("No supported file manager found. Please install nautilus, thunar, or dolphin.")
 
 
+def pop_up(text, title, sound):
+	notification.notify(
+		title=title,
+		message=text,
+		app_name="File Manager"
+	)
+	# playsound(f"assets/{sound}")
+
+
 def main(file_name) -> None:
 	instructions = search_instructions()
 	display_messages(instructions)
 	path = sys_path()
 	find_path = find_file(file_name, path)
 	if find_path[0]:
-		print("Opening explorer")
+		pop_up("File found, file location pop up will open.", "File Manager | Search File", "sound.mp3")
 		time.sleep(3)
 		open_files(find_path[1])
 	else:
+		pop_up("File not found. That's all we know.", "File Manager| Search File", "sound.mp3")
 		print("File not found, please make sure it exists")
