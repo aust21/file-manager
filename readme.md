@@ -34,7 +34,7 @@ chmod +x setUp.sh
 
 - Run the script to set up
 ```bash
-setUp.sh
+./setUp.sh
 ```
 
 - You can run the program with any of the commands
