@@ -5,12 +5,13 @@ import argparse
 
 sys.path.append(os.getcwd())
 
+from modules import *
 import text_operations.removeFile as removefile
 import text_operations.search_file as search
 import text_operations.viewFile as viewFile
 import text_operations.writeFile as writeFile
 import text_operations.shareFiles as shareFiles
-import main
+import helpCommands
 
 def main():
     parser = argparse.ArgumentParser(prog='filemanager', description="File Manager CLI")
@@ -37,10 +38,14 @@ def main():
     parser_write.set_defaults(func=lambda args: writeFile.main(args.file_name))
 
     # Share file command
-    parser_share = subparsers.add_parser('share', help='Write to share a file')
+    parser_share = subparsers.add_parser('share', help='Share a file')
     parser_share.add_argument('file_name', help='Name of the file to share')
     parser_share.set_defaults(func=lambda args: shareFiles.main(args.file_name))
 
+
+    # Help file command
+    parser_help = subparsers.add_parser('help', help='Show help')
+    parser_help.set_defaults(func=helpCommands.entry())
     
     # Parse arguments
     args = parser.parse_args()
@@ -48,7 +53,7 @@ def main():
     if args.command:
         args.func(args)
     else:
-        main.entry()
+        helpCommands.entry()
 
 if __name__ == "__main__":
     try:

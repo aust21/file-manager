@@ -6,6 +6,9 @@ sudo apt-get install -y nautilus
 # Copy the filemanager binary to ~/.local/bin
 cp -r ~/Downloads/filemanager ~/.local/bin
 
+# install modules
+pip3 install tqdm rich fpdf
+
 # Make the filemanager binary executable
 chmod +x ~/.local/bin/filemanager
 
@@ -16,3 +19,5 @@ sudo cp ~/Downloads/filemanager /usr/local/bin/filemanager
 sudo chmod +x /usr/local/bin/filemanager
 
 echo "filemanager setup complete."
+
+filemanager help

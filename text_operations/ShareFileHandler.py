@@ -37,7 +37,7 @@ def main(name):
         sf.open_files(path[1])
         confirm = input("Please confirm this is the file you want to share: [y or n]: ")
         if confirm == "y":
-            sf.pop_up("Sharing will begin.", "File Manager | Sharing Files", "sound.mp3")
+            sf.pop_up("Sharing will begin.", "File Manager | Sharing Files")
             time.sleep(3)
             runServer(ip, path[1])
         else:

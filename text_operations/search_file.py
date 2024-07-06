@@ -55,37 +55,31 @@ def open_files(file_path) -> None:
 	elif platform.system() == "Linux":
 		try:
 			subprocess.Popen(["nautilus", "--select", file_path])
-			print("first try")
 		except FileNotFoundError:
-			try:
-				subprocess.Popen(["thunar", "--select", file_path])
-				print("error first")
-			except FileNotFoundError:
-				try:
-					subprocess.Popen(["dolphin", "--select", file_path])
-					print("error second")
-				except FileNotFoundError:
-					print("No supported file manager found. Please install nautilus, thunar, or dolphin.")
+			print("Please install nautilus")
 
 
-def pop_up(text, title, sound):
-	notification.notify(
-		title=title,
-		message=text,
-		app_name="File Manager"
-	)
-	# playsound(f"assets/{sound}")
+def pop_up(text, title):
+	# fix me please :(
+
+
+	# notification.notify(
+	# 	title=title,
+	# 	message=text,
+	# 	app_name="File Manager"
+	# )
+	pass
 
 
 def main(file_name) -> None:
-	instructions = search_instructions()
-	display_messages(instructions)
+	# instructions = search_instructions()
+	# display_messages(instructions)
 	path = sys_path()
 	find_path = find_file(file_name, path)
 	if find_path[0]:
-		pop_up("File found, file location pop up will open.", "File Manager | Search File", "sound.mp3")
+		pop_up("File found, file location pop up will open.", "File Manager | Search File")
 		time.sleep(3)
 		open_files(find_path[1])
 	else:
-		pop_up("File not found. That's all we know.", "File Manager| Search File", "sound.mp3")
+		pop_up("File not found. That's all we know.", "File Manager| Search File")
 		print("File not found, please make sure it exists")

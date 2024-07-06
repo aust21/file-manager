@@ -15,7 +15,7 @@ def display_content(text, file_name):
 
 def show_file_contents(file_exists, file_path, file_name) -> None:
 	if file_exists:
-		sf.pop_up("File found.", "File Manager | View File", "sound.mp3")
+		sf.pop_up("File found.", "File Manager | View File")
 		with open(file_path, "r") as fl:
 			content = fl.readlines()
 			text = "".join(content)
@@ -24,7 +24,7 @@ def show_file_contents(file_exists, file_path, file_name) -> None:
 			console.height = required_height
 			console.print(layout)
 	else:
-		sf.pop_up("File not found.", "File Manager | View File", "sound.mp3")
+		sf.pop_up("File not found.", "File Manager | View File")
 		print("Cannot open the file, make sure it exists.")
 
 

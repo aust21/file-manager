@@ -1,3 +1,4 @@
+import fpdf
 from fpdf import FPDF
 import os
 class PDF(FPDF):

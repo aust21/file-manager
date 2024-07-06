@@ -5,7 +5,7 @@ console = Console(height = 20)
 
 def app_layout(title, subtitle, message, commands, actions) -> None:
 	layout.split_column(
-		Layout(Panel(message, title="File Manager", subtitle="V1.1.0")),
+		Layout(Panel(message, title="File Manager", subtitle="V1.1.2-beta")),
 		Layout(name = "bottom"),
 	)
 
@@ -28,7 +28,7 @@ def file_actions() -> str:
 
 def valid_commands() -> str:
 	return ""\
-	"\nfilemanager -h\n\n"\
+	"\nfilemanager help\n\n"\
 	"filemanager write filename\n\n"\
 	"filemanager search filename\n\n"\
 	"filemanager share filename\n\n"\
@@ -37,6 +37,10 @@ def valid_commands() -> str:
 
 
 def entry():
+	if os.name == 'nt':
+		os.system('cls')
+	else:
+		os.system('clear')
 	message = "\nWelcome to file manager, the all you need file management tool for easy file operations\n"
 	title = "File Manager"
 	subtitle = "Thank you for choosing File Manager"

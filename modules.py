@@ -11,4 +11,6 @@ import http.server
 import socketserver
 import socket
 import time
+import plyer
 from plyer import notification
+from fpdf import FPDF
