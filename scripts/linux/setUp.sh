@@ -20,4 +20,4 @@ sudo chmod +x /usr/local/bin/filemanager
 
 echo "filemanager setup complete."
 
-filemanager help
+filemanager

@@ -28,7 +28,7 @@ def file_actions() -> str:
 
 def valid_commands() -> str:
 	return ""\
-	"\nfilemanager help\n\n"\
+	"\nfilemanager\n\n"\
 	"filemanager write filename\n\n"\
 	"filemanager search filename\n\n"\
 	"filemanager share filename\n\n"\

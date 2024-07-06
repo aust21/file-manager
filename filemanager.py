@@ -41,11 +41,6 @@ def main():
     parser_share = subparsers.add_parser('share', help='Share a file')
     parser_share.add_argument('file_name', help='Name of the file to share')
     parser_share.set_defaults(func=lambda args: shareFiles.main(args.file_name))
-
-
-    # Help file command
-    parser_help = subparsers.add_parser('help', help='Show help')
-    parser_help.set_defaults(func=helpCommands.entry())
     
     # Parse arguments
     args = parser.parse_args()
@@ -59,4 +54,5 @@ if __name__ == "__main__":
     try:
         main()
     except Exception as e:
-        pass
+        print("Running file manager has failed, that's all we know."\
+               " Email this guy he may know: kngobeni223@gmail.com")
