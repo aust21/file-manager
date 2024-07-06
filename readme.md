@@ -70,8 +70,6 @@ filemanager share filename
 ## Future Plans
 In the future, I plan to:
 - Make the entire project a command-line application
-- Add Linux support
-- Implement speech recognition for executing operations
 
 ## Contributors
 - Austin - kngobeni223@gmail.com

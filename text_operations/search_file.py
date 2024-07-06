@@ -55,12 +55,15 @@ def open_files(file_path) -> None:
 	elif platform.system() == "Linux":
 		try:
 			subprocess.Popen(["nautilus", "--select", file_path])
+			print("first try")
 		except FileNotFoundError:
 			try:
 				subprocess.Popen(["thunar", "--select", file_path])
+				print("error first")
 			except FileNotFoundError:
 				try:
 					subprocess.Popen(["dolphin", "--select", file_path])
+					print("error second")
 				except FileNotFoundError:
 					print("No supported file manager found. Please install nautilus, thunar, or dolphin.")
 
