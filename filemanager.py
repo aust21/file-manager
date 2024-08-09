@@ -6,11 +6,11 @@ import argparse
 sys.path.append(os.getcwd())
 
 from modules import *
-import text_operations.removeFile as removefile
-import text_operations.search_file as search
-import text_operations.viewFile as viewFile
-import text_operations.writeFile as writeFile
-import text_operations.shareFiles as shareFiles
+import operations.removeFile as removefile
+import operations.search_file as search
+import operations.viewFile as viewFile
+import operations.writeFile as writeFile
+import operations.shareFiles as shareFiles
 import helpCommands
 
 def main():

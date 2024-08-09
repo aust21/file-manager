@@ -2,7 +2,7 @@
 import sys, os
 sys.path.append(os.getcwd())
 from modules import *
-import text_operations.search_file as sf
+import operations.search_file as sf
 
 PORT = 8000
 

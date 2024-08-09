@@ -2,8 +2,8 @@ import sys, os
 from fpdf import FPDF
 sys.path.append(os.getcwd())
 from modules import *
-import text_operations.search_file as sf
-import text_operations.pdf_handler as pdf
+import operations.search_file as sf
+import operations.pdf_handler as pdf
 
 
 def welcome_console(title, message, commands, actions) -> None:

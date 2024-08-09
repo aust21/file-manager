@@ -2,7 +2,7 @@ import sys, os
 sys.path.append(os.getcwd())
 from modules import *
 from center_text import *
-import text_operations.ShareFileHandler as sh
+import operations.ShareFileHandler as sh
 
 layout = Layout()
 console = Console(height = 20)
