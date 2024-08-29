@@ -38,7 +38,13 @@ def find_file(file_name, search_path) -> tuple[bool, str]:
 	print("This process may take a while....")
 	for root, dirs, files in tqdm(os.walk(search_path), desc="Searching"):
 		if file_name in files:
-			return True, os.path.join(root, file_name)
+			print("File found, please confirm this is the correct file: [yes or no]")
+			open_files(os.path.join(root, file_name))
+			confirm = input()
+			if confirm == "yes":
+				return True, os.path.join(root, file_name)
+			else:
+				continue
 	return False, ""
 
 
@@ -83,3 +89,7 @@ def main(file_name) -> None:
 	else:
 		pop_up("File not found. That's all we know.", "File Manager| Search File")
 		print("File not found, please make sure it exists")
+
+
+if __name__ == "__main__":
+	main("me.txt")

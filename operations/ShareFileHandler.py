@@ -32,17 +32,12 @@ def main(name):
     if path[0]:
         file_path = path[1]
         DIRECTORY = os.path.dirname(file_path)
-        print("File found....The file explorer will open for you to confirm the file")
+        sf.pop_up("Sharing will begin.", "File Manager | Sharing Files")
         time.sleep(3)
-        sf.open_files(path[1])
-        confirm = input("Please confirm this is the file you want to share: [y or n]: ")
-        if confirm == "y":
-            sf.pop_up("Sharing will begin.", "File Manager | Sharing Files")
-            time.sleep(3)
-            runServer(ip, path[1])
-        else:
-            sf.pop_up("Sharing not started.", "File Manager | Sharing Files")
-            print("Please make sure you enter the correct file name")
+        runServer(ip, path[1])
     else:
         sf.pop_up("File not found.", "File Manager | Sharing Files")
         print("File not found.")
+
+if __name__ == "__main__":
+	main("me.txt")
