@@ -1,20 +1,59 @@
-import sys, os
+import sys, os, shutil
 sys.path.append(os.getcwd())
 from modules import *
+import search_file as sf
+from pathlib import Path
+
+PATH = sf.sys_path()
+
+def get_organise_path(directory_) -> str:
+    for root, dirs, files in tqdm(os.walk(PATH), desc="Searching"):
+        if directory_ in dirs:
+            sf.open_files(os.path.join(root, directory_))
+            answer = input("Confirm this is the correct directory [yes or no]: ")
+            if answer.lower() == "yes":
+                return True, os.path.join(root, directory_)
+            continue
+    return False, ""
+
+def create_dir(directory_to_organise) -> None:
+    os.chdir(directory_to_organise)
+    for item in os.listdir():
+        if item.startswith("."):
+            continue
+        
+        if item.endswith(".txt") or item.endswith(".pdf"):
+            Path("documents").mkdir(exist_ok=True)
+            shutil.move(item, "documents")
+
+        elif item.endswith(".PNG") or item.endswith(".png") or item.endswith(".jpg") or item.endswith(".jpeg"):
+            Path("images").mkdir(exist_ok=True)
+            shutil.move(item, "images")
+        
+        elif item.endswith(".zip") or item.endswith(".rar") or item.endswith(".gz"):
+            Path("compressed files").mkdir(exist_ok=True)
+            shutil.move(item, "compressed files")
+
+        elif item.endswith(".mp3") or item.endswith("mp4a"):
+            Path("audio files").mkdir(exist_ok=True)
+            shutil.move(item, "audio files")
+
+        elif item.endswith(".mp4") or item.endswith(".mkv") or item.endswith(".gif"):
+            Path("video files").mkdir(exist_ok=True)
+            shutil.move(item, "video files")
+
+        else:
+            Path("other files").mkdir(exist_ok=True)
+            shutil.move(item, "other files")
 
 
-
-def get_organise_path() -> str:
-    pass
-
-def create_dir() -> None:
-    pass
-
-def move_items() -> None:
-    pass
-
-def main():
-    pass
+def main(folder_dir):
+    folder_found = get_organise_path(folder_dir)
+    if folder_found[0]:
+        path_to_organise = folder_found[1]
+        create_dir(path_to_organise)
+    else:
+        print(f"Folder {folder_dir} not found.")
 
 if __name__ == "__main__":
-    main()
+    main("Downloads")

@@ -66,14 +66,6 @@ def open_files(file_path) -> None:
 
 
 def pop_up(text, title):
-	# fix me please :(
-
-
-	# notification.notify(
-	# 	title=title,
-	# 	message=text,
-	# 	app_name="File Manager"
-	# )
 	pass
 
 
