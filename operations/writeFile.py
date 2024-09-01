@@ -184,7 +184,7 @@ def empty_file_creation_instructions() -> str:
 def not_empty_file_instructions() -> str:
 	return "1. To create and add text to the file, enter 'cw' and you will"\
 				"be prompted to enter the contents of the file\n"\
-		"2. To enter a new paragraph, press the enter key only one and continue typing.\n"\
+		"2. To enter a new paragraph, press the enter key only once and continue typing.\n"\
 		"3. To exit and save the file press the enter key twice."
 
 
