@@ -45,7 +45,15 @@ chmod +x setUp.sh
 ./setUp.sh
 ```
 
-- You can run the program with any of the commands
+### Commands
+You can run the program with any of the commands
+
+- To view commands
+
+```bash
+filemanager
+```
+
 - To search for a file
 
 ```bash
@@ -67,26 +75,26 @@ filemanager share filename
 - To create a file
 
 ```bash
-filemanager share filename
+filemanager write filename
 ```
 
-- [Please visit the release page](https://github.com/aust21/file-manager/releases/tag/v1.1.2-beta) for a detailed description about this release.
+- To organise a folder
+
+```bash
+filemanager organise folder_name
+```
+
+- [Please visit the release page](https://github.com/aust21/file-manager/releases/tag/v1.1.3) for a detailed description about this release.
 
 ## Screenshots
 
-![main](assets/readmeImages/placeholder.jpg)
-
-## Installation
-
-- Python 3
-- Additional dependencies: fpdf, rich
+![main](assets/readmeImages/Screenshot%20from%202024-09-01%2017-28-11.png)
 
 ## Future Plans
 
 In the future, I plan to:
 
 - Add more features to automate file management
-- Make the entire project a command-line application
 
 ## Unistalling the program
 For Linux

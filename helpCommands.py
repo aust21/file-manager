@@ -5,7 +5,7 @@ console = Console(height = 22)
 
 def app_layout(title, subtitle, message, commands, actions) -> None:
 	layout.split_column(
-		Layout(Panel(message, title="File Manager", subtitle="V1.1.2-beta")),
+		Layout(Panel(message, title="File Manager", subtitle="V1.1.3")),
 		Layout(name = "bottom"),
 	)
 
