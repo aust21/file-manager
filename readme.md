@@ -84,6 +84,9 @@ filemanager write filename
 filemanager organise folder_name
 ```
 
+## Documentation
+- [Please visit the Wiki](https://github.com/aust21/file-manager/wiki/File-Manager-Wiki) to learn more about the project.
+
 - [Please visit the release page](https://github.com/aust21/file-manager/releases/tag/v1.1.3) for a detailed description about this release.
 
 ## Screenshots
