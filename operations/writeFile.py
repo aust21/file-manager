@@ -199,6 +199,10 @@ def get_actions() -> str:
 
 
 def main(file_name) -> None:
+	if os.name == 'nt':
+		os.system('cls')
+	else:
+		os.system('clear')
 	message = "You can create a new empty file or create and add text to the file"
 	commands = get_commands()
 	actions = get_actions()

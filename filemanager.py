@@ -11,6 +11,7 @@ import operations.search_file as search
 import operations.viewFile as viewFile
 import operations.writeFile as writeFile
 import operations.shareFiles as shareFiles
+import operations.organise as organise
 import helpCommands
 
 def main():
@@ -41,6 +42,11 @@ def main():
     parser_share = subparsers.add_parser('share', help='Share a file')
     parser_share.add_argument('file_name', help='Name of the file to share')
     parser_share.set_defaults(func=lambda args: shareFiles.main(args.file_name))
+
+    # organise files
+    parser_organise = subparsers.add_parser('organise', help='Organise a folder')
+    parser_organise.add_argument('folder_name', help='Name of the folder to organise')
+    parser_organise.set_defaults(func=lambda args: organise.main(args.folder_name))
     
     # Parse arguments
     args = parser.parse_args()

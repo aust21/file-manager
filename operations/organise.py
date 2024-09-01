@@ -1,7 +1,7 @@
 import sys, os, shutil
 sys.path.append(os.getcwd())
 from modules import *
-import search_file as sf
+import operations.search_file as sf
 from pathlib import Path
 
 PATH = sf.sys_path()
@@ -19,7 +19,7 @@ def get_organise_path(directory_) -> str:
 def create_dir(directory_to_organise) -> None:
     os.chdir(directory_to_organise)
     for item in os.listdir():
-        if item.startswith("."):
+        if item.startswith(".") or item == "FileManager":
             continue
         
         if item.endswith(".txt") or item.endswith(".pdf"):
@@ -48,6 +48,14 @@ def create_dir(directory_to_organise) -> None:
 
 
 def main(folder_dir):
+    if os.name == 'nt':
+        os.system('cls')
+    else:
+        os.system('clear')
+
+    if folder_dir.lower() == "home" or folder_dir.startswith("."):
+        print("Organising such files could cause unexpected events on your computer")
+        return
     folder_found = get_organise_path(folder_dir)
     if folder_found[0]:
         path_to_organise = folder_found[1]
@@ -55,5 +63,5 @@ def main(folder_dir):
     else:
         print(f"Folder {folder_dir} not found.")
 
-if __name__ == "__main__":
-    main("Downloads")
+# if __name__ == "__main__":
+#     main("Downloads")

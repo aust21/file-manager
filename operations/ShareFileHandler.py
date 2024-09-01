@@ -26,6 +26,11 @@ def runServer(ip, directory):
 
 
 def main(name):
+
+    if os.name == 'nt':
+        os.system('cls')
+    else:
+        os.system('clear')
     global DIRECTORY
     ip = get_address()
     path = sf.find_file(name, sf.sys_path())
@@ -38,6 +43,3 @@ def main(name):
     else:
         sf.pop_up("File not found.", "File Manager | Sharing Files")
         print("File not found.")
-
-if __name__ == "__main__":
-	main("me.txt")

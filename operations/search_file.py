@@ -70,8 +70,10 @@ def pop_up(text, title):
 
 
 def main(file_name) -> None:
-	# instructions = search_instructions()
-	# display_messages(instructions)
+	if os.name == 'nt':
+		os.system('cls')
+	else:
+		os.system('clear')
 	path = sys_path()
 	find_path = find_file(file_name, path)
 	if find_path[0]:

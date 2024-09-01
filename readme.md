@@ -88,6 +88,18 @@ In the future, I plan to:
 - Add more features to automate file management
 - Make the entire project a command-line application
 
+## Unistalling the program
+For Linux
+1. Remove the binary from /usr/local/bin:
+```
+sudo rm /usr/local/bin/filemanager
+```
+
+2. Remove the binary from ~/.local/bin:
+```
+rm ~/.local/bin/filemanager
+```
+
 ## Contributors
 
 - Austin - kngobeni223@gmail.com

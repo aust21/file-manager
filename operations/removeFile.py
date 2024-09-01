@@ -19,6 +19,10 @@ def remove_file(can_remove, file_path, file_name) -> None:
 
 
 def main(file_name) -> None:
+	if os.name == 'nt':
+		os.system('cls')
+	else:
+		os.system('clear')
 	search = sf.sys_path()
 	can_remove, file_path = sf.find_file(file_name, search)
 	print(remove_file(can_remove, file_path, file_name))

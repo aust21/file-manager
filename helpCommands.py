@@ -1,7 +1,7 @@
 from modules import *
 
 layout = Layout()
-console = Console(height = 20)
+console = Console(height = 22)
 
 def app_layout(title, subtitle, message, commands, actions) -> None:
 	layout.split_column(
@@ -13,7 +13,7 @@ def app_layout(title, subtitle, message, commands, actions) -> None:
 	    Layout(Panel(commands, title="Commands")),
 	    Layout(Panel(actions, title="Action")),
 	)
-	layout["bottom"].size = 15
+	layout["bottom"].size = 17
 	console.print(layout)
 
 def file_actions() -> str:
@@ -23,7 +23,8 @@ def file_actions() -> str:
 	"Look for a file\n\n"\
 	"Send file through browser\n\n"\
 	"Remove a file\n\n"\
-	"View a file\n\n"
+	"View a file\n\n"\
+	"Organise files in a folder\n\n"
 
 
 def valid_commands() -> str:
@@ -34,6 +35,7 @@ def valid_commands() -> str:
 	"filemanager share filename\n\n"\
 	"filemanager remove filename\n\n"\
 	"filemanager view filename\n\n"\
+	"filemanager organise folder\n\n"\
 
 
 def entry():

@@ -46,6 +46,10 @@ def share(file_name):
 
 
 def main(file_name):
+    if os.name == 'nt':
+        os.system('cls')
+    else:
+        os.system('clear')
     warning = warning_message()
     instuctions = instuctions_text()
     app_layout("\n"+center("The insecure way to share files"), warning, instuctions)

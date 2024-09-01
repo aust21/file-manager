@@ -36,6 +36,10 @@ def sys_path() -> None:
 
 
 def main(file_name):
+	if os.name == 'nt':
+		os.system('cls')
+	else:
+		os.system('clear')
 	path = sys_path()
 	file_exists, file_path = sf.find_file(file_name, path)
 	show_file_contents(file_exists, file_path, file_name)
