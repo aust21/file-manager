@@ -124,6 +124,14 @@ sudo rm /usr/local/bin/filemanager
 rm ~/.local/bin/filemanager
 ```
 
+For Windows
+1. [Download](scripts/windows/uninstall.ps1) the uninstall script
+2. Open the powershell and run the script
+```bash
+cd $Home\Downloads
+.\uninstall-filemanager.ps1
+```
+
 ## Contributors
 
 - Austin - kngobeni223@gmail.com

@@ -12,7 +12,7 @@ if (-Not (Test-Path -Path $customBinPath)) {
 # Define the source path of the filemanager.exe using the current user's username
 $fileManagerExePath = "C:\Users\$currentUsername\Downloads\filemanager.exe"
 
-# Define the destination path
+# Define the destination patha
 $destinationPath = Join-Path -Path $customBinPath -ChildPath "filemanager.exe"
 
 # Copy the executable to the new directory
