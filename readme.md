@@ -125,10 +125,13 @@ rm ~/.local/bin/filemanager
 ```
 
 For Windows
-1. [Download](scripts/windows/uninstall.ps1) the uninstall script
-2. Open the powershell and run the script
+1. [Download](scripts/windows/uninstall-filemanager.ps1) the uninstall script
+2. Open the powershell and locate the script
 ```bash
 cd $Home\Downloads
+```
+3. Run the script
+```bash
 .\uninstall-filemanager.ps1
 ```
 
