@@ -55,7 +55,7 @@ chmod +x setUp.sh
 ```
 
 ### Troubleshooting Installation
-- If you faced any issues with installing the program, visit the [wiki](https://github.com/aust21/file-manager/wiki/installation) and see if the issue has been solved.
+- If you faced any issues with installing the program, visit the [wiki](https://github.com/aust21/file-manager/wiki/installation#troubleshooting) and see if the issue has been solved.
 - If the issue can't be resolved, please open an issue.
 
 ### Commands
