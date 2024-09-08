@@ -112,33 +112,6 @@ In the future, I plan to:
 
 - Add more features to automate file management
 
-## Unistalling the program
-For Linux
-1. Remove the binary from /usr/local/bin:
-```
-sudo rm /usr/local/bin/filemanager
-```
-
-2. Remove the binary from ~/.local/bin:
-```
-rm ~/.local/bin/filemanager
-```
-
-For Windows
-1. [Download](scripts/windows/uninstall-filemanager.ps1) the uninstall script
-2. Open the powershell and locate the script
-```bash
-cd $Home\Downloads
-```
-3. Temporarily bypass the execution policy for the current session and allow the script to run:
-```bash
-Set-ExecutionPolicy Bypass -Scope Process -Force
-```
-3. Run the script
-```bash
-.\uninstall-filemanager.ps1
-```
-
 ## Contributors
 
 - Austin - kngobeni223@gmail.com
