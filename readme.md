@@ -19,7 +19,7 @@ You can download the latest binary from the links:
 
 [Download Binary for Linux](https://github.com/aust21/file-manager/releases/download/v1.1.3/filemanager)
 
-[Download Binary for Windows](https://github.com/aust21/file-manager/releases/download/v1.1.2-beta/filemanager.exe)
+[Download Binary for Windows](https://github.com/aust21/file-manager/releases/download/v1.1.3/filemanager.exe)
 
 ### For Windows
 
