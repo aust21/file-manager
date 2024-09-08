@@ -130,9 +130,13 @@ For Windows
 ```bash
 cd $Home\Downloads
 ```
+3. Temporarily bypass the execution policy for the current session and allow the script to run:
+```bash
+Set-ExecutionPolicy Bypass -Scope Process -Force
+```
 3. Run the script
 ```bash
-powershell -ExecutionPolicy Bypass -File .\uninstall-filemanager.ps1
+.\uninstall-filemanager.ps1
 ```
 
 ## Contributors
