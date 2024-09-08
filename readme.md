@@ -132,7 +132,7 @@ cd $Home\Downloads
 ```
 3. Run the script
 ```bash
-.\uninstall-filemanager.ps1
+powershell -ExecutionPolicy Bypass -File .\uninstall-filemanager.ps1
 ```
 
 ## Contributors
