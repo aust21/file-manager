@@ -23,7 +23,16 @@ You can download the latest binary from the links:
 
 ### For Windows
 
-in development :)
+[Download the set-up script](scripts/windows/setUp.ps1)
+
+1. Open the Powershell
+```bash
+cd $HOME\Downloads
+```
+2. Run the Script
+```bash
+.\setUp.ps1
+```
 
 ### For Linux
 
@@ -44,6 +53,10 @@ chmod +x setUp.sh
 ```bash
 ./setUp.sh
 ```
+
+### Troubleshooting Installation
+- If you faced any issues with installing the program, visit the [wiki](https://github.com/aust21/file-manager/wiki/installation) and see if the issue has been solved.
+- If the issue can't be resolved, please open an issue.
 
 ### Commands
 You can run the program with any of the commands
