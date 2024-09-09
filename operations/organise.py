@@ -22,29 +22,40 @@ def create_dir(directory_to_organise) -> None:
         if item.startswith(".") or item == "FileManager":
             continue
         
-        if item.endswith(".txt") or item.endswith(".pdf"):
-            Path("documents").mkdir(exist_ok=True)
-            shutil.move(item, "documents")
+        # this moves files, not directories
+        if os.path.isfile(item):
+            # Check for documents
+            if item.endswith(".txt") or item.endswith(".pdf"):
+                Path("documents").mkdir(exist_ok=True)
+                shutil.move(item, "documents")
 
-        elif item.endswith(".PNG") or item.endswith(".png") or item.endswith(".jpg") or item.endswith(".jpeg"):
-            Path("images").mkdir(exist_ok=True)
-            shutil.move(item, "images")
-        
-        elif item.endswith(".zip") or item.endswith(".rar") or item.endswith(".gz"):
-            Path("compressed files").mkdir(exist_ok=True)
-            shutil.move(item, "compressed files")
+            # Check for images
+            elif item.endswith(".PNG") or item.endswith(".png") or item.endswith(".jpg") or item.endswith(".jpeg"):
+                Path("images").mkdir(exist_ok=True)
+                shutil.move(item, "images")
 
-        elif item.endswith(".mp3") or item.endswith("mp4a"):
-            Path("audio files").mkdir(exist_ok=True)
-            shutil.move(item, "audio files")
+            # Check for compressed files
+            elif item.endswith(".zip") or item.endswith(".rar") or item.endswith(".gz"):
+                Path("compressed files").mkdir(exist_ok=True)
+                shutil.move(item, "compressed files")
 
-        elif item.endswith(".mp4") or item.endswith(".mkv") or item.endswith(".gif"):
-            Path("video files").mkdir(exist_ok=True)
-            shutil.move(item, "video files")
+            # Check for audio files
+            elif item.endswith(".mp3") or item.endswith("mp4a"):
+                Path("audio files").mkdir(exist_ok=True)
+                shutil.move(item, "audio files")
 
+            # Check for video files
+            elif item.endswith(".mp4") or item.endswith(".mkv") or item.endswith(".gif"):
+                Path("video files").mkdir(exist_ok=True)
+                shutil.move(item, "video files")
+
+            # Move everything else to 'other files'
+            else:
+                Path("other files").mkdir(exist_ok=True)
+                shutil.move(item, "other files")
         else:
-            Path("other files").mkdir(exist_ok=True)
-            shutil.move(item, "other files")
+            # Ignore directories, do not move them
+            print(f"Skipping directory: {item}")
 
 
 def main(folder_dir):
@@ -63,5 +74,5 @@ def main(folder_dir):
     else:
         print(f"Folder {folder_dir} not found.")
 
-# if __name__ == "__main__":
-#     main("Downloads")
+if __name__ == "__main__":
+    main("Downloads")
