@@ -24,7 +24,7 @@ def file_actions() -> str:
 	"Send file through browser\n\n"\
 	"Remove a file\n\n"\
 	"View a file\n\n"\
-	"Organise files in a folder\n\n"
+	"Organize files in a folder\n\n"
 
 
 def valid_commands() -> str:
@@ -35,7 +35,7 @@ def valid_commands() -> str:
 	"filemanager share filename\n\n"\
 	"filemanager remove filename\n\n"\
 	"filemanager view filename\n\n"\
-	"filemanager organise folder\n\n"\
+	"filemanager tidy folder\n\n"\
 
 
 def entry():

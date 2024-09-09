@@ -44,7 +44,7 @@ def main():
     parser_share.set_defaults(func=lambda args: shareFiles.main(args.file_name))
 
     # organise files
-    parser_organise = subparsers.add_parser('organise', help='Organise a folder')
+    parser_organise = subparsers.add_parser('tidy', help='Organise a folder')
     parser_organise.add_argument('folder_name', help='Name of the folder to organise')
     parser_organise.set_defaults(func=lambda args: organise.main(args.folder_name))
     
