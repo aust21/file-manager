@@ -4,7 +4,7 @@ File Manager CLI Tool
 
 ## Overview
 
-File Manager CLI Tool is a command line tool that provides useful file operations. While not a command tool (in development :), it offers operations like creating files, editing files, locating files and deleting files.
+File Manager CLI Tool is a command line tool that provides useful file operations. The tool offers operations like creating, editing, locating, and deleting files.
 
 ## Features
 
@@ -12,6 +12,7 @@ File Manager CLI Tool is a command line tool that provides useful file operation
 - Locate files
 - Delete files
 - Share files on the browser
+- Organize directories
 
 ## Usage
 
@@ -73,13 +74,13 @@ filemanager
 filemanager search filename
 ```
 
-- To remove for a file
+- To remove a file
 
 ```bash
 filemanager remove filename
 ```
 
-- To share for a file
+- To share a file
 
 ```bash
 filemanager share filename
@@ -91,10 +92,10 @@ filemanager share filename
 filemanager write filename
 ```
 
-- To organise a folder
+- To organize a folder
 
 ```bash
-filemanager organise folder_name
+filemanager organize folder_name
 ```
 
 ## Documentation
