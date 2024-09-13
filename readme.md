@@ -4,7 +4,7 @@ File Manager CLI Tool
 
 ## Overview
 
-File Manager CLI Tool is a command line tool that provides useful file operations. The tool offers operations like creating, editing, locating, and deleting files.
+File Manager CLI Tool is a command line tool that provides useful file operations. While not a command tool (in development :), it offers operations like creating files, editing files, locating files and deleting files.
 
 ## Features
 
@@ -12,7 +12,6 @@ File Manager CLI Tool is a command line tool that provides useful file operation
 - Locate files
 - Delete files
 - Share files on the browser
-- Organize directories
 
 ## Usage
 
@@ -24,20 +23,23 @@ You can download the latest binary from the links:
 
 ### For Windows
 
-[Download the set-up script](scripts/windows/setUp.ps1)
+[Download the set-up script](https://github.com/aust21/file-manager/raw/main/scripts/windows/setUp.ps1)
 
 1. Open the Powershell
+
 ```bash
 cd $HOME\Downloads
 ```
+
 2. Run the Script
+
 ```bash
 .\setUp.ps1
 ```
 
 ### For Linux
 
-[Download the set-up script](scripts/linux/setUp.sh)
+[Download the set-up script](https://github.com/aust21/file-manager/raw/main/scripts/linux/setUp.sh)
 
 ```bash
 cd ~/Downloads
@@ -56,10 +58,12 @@ chmod +x setUp.sh
 ```
 
 ### Troubleshooting Installation
+
 - If you faced any issues with installing the program, visit the [wiki](https://github.com/aust21/file-manager/wiki/installation#troubleshooting) and see if the issue has been solved.
 - If the issue can't be resolved, please open an issue.
 
 ### Commands
+
 You can run the program with any of the commands
 
 - To view commands
@@ -74,13 +78,13 @@ filemanager
 filemanager search filename
 ```
 
-- To remove a file
+- To remove for a file
 
 ```bash
 filemanager remove filename
 ```
 
-- To share a file
+- To share for a file
 
 ```bash
 filemanager share filename
@@ -92,13 +96,14 @@ filemanager share filename
 filemanager write filename
 ```
 
-- To organize a folder
+- To organise a folder
 
 ```bash
-filemanager organize folder_name
+filemanager organise folder_name
 ```
 
 ## Documentation
+
 - [Please visit the Wiki](https://github.com/aust21/file-manager/wiki/File-Manager-Wiki) to learn more about the project.
 
 - [Please visit the release page](https://github.com/aust21/file-manager/releases/tag/v1.1.3) for a detailed description about this release.
